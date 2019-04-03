@@ -1,7 +1,6 @@
 package com.netcracker.edu.backend.service;
 
 import com.netcracker.edu.backend.entity.Users;
-import org.apache.catalina.User;
 
 import java.util.List;
 

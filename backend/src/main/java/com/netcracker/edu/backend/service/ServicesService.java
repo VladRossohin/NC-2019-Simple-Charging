@@ -13,7 +13,7 @@ public interface ServicesService {
 
     List<Services> findAll();
     Optional<Services> findById(Long id);
-    ServicesRepository findByUser(Users userId);
+    Optional<Services> findByUser(Users userId);
     Services save(Services service);
     void delete(Long id);
 }

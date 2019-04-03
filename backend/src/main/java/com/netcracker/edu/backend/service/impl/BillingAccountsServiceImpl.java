@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BillingAccountsServiceImpl implements BillingAccountsService {
@@ -21,7 +22,12 @@ public class BillingAccountsServiceImpl implements BillingAccountsService {
     }
 
     @Override
-    public BillingAccounts findByUser(Users userId) {
+    public Optional<BillingAccounts> findById(Long id) {
+        return billingAccountsRepository.findById(id);
+    }
+
+    @Override
+    public Optional<BillingAccounts>findByUser(Users userId) {
         return billingAccountsRepository.findByUser(userId);
     }
 

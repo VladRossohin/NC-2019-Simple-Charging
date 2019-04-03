@@ -27,7 +27,7 @@ public class ServicesServiceImpl implements ServicesService {
     }
 
     @Override
-    public ServicesRepository findByUser(Users userId) {
+    public Optional<Services> findByUser(Users userId) {
         return servicesRepository.findByUser(userId);
     }
 
