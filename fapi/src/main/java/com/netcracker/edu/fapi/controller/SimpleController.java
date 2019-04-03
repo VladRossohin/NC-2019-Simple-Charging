@@ -1,4 +1,4 @@
-package com.netcracker.edu.fapi.controllers;
+package com.netcracker.edu.fapi.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
