@@ -4,12 +4,13 @@ import com.netcracker.edu.backend.entity.Subscribes;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface SubscribesService {
 
     List<Subscribes> findAll();
-    Subscribes findById(Long subscribeId);
+    Optional<Subscribes> findById(Long subscribeId);
     Subscribes save(Subscribes subscribe);
     void delete(Long id);
 }
