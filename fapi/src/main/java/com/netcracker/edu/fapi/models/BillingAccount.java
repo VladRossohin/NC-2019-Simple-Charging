@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BillingAccount {
 
-    private long id;
-    private String user;
+    private Long id;
+    private User user;
     private String name;
     private int money;
 
@@ -14,7 +14,7 @@ public class BillingAccount {
     public BillingAccount() {
     }
 
-    public BillingAccount(long id, String user, String name, int money) {
+    public BillingAccount(long id, User user, String name, int money) {
         this.id = id;
         this.user = user;
         this.name = name;
@@ -29,11 +29,11 @@ public class BillingAccount {
         this.id = id;
     }
 
-    public String getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
