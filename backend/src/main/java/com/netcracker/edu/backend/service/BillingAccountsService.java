@@ -11,10 +11,10 @@ import java.util.Optional;
 public interface BillingAccountsService {
 
     List<BillingAccounts> findAll();
-    Optional<BillingAccounts> findById(Long id);
-    Optional<BillingAccounts> findByUser(Users userId);
+    Optional<BillingAccounts> findById(long id);
+    Optional<BillingAccounts> findByUserId(long userId);
     BillingAccounts save(BillingAccounts billingAccount);
-    void delete(Long id);
+    void delete(long id);
 
 
 }

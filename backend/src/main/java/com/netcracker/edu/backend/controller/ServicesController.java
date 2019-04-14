@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/api/services")
+@RequestMapping(value = "/api/service")
 public class ServicesController {
 
     private ServicesService servicesService;
@@ -21,7 +21,7 @@ public class ServicesController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Services> getServiceById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Services> getServiceById(@PathVariable(name = "id") long id) {
 
         Optional<Services> service = servicesService.findById(id);
 
@@ -36,6 +36,11 @@ public class ServicesController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public List<Services> getAllServices() {
         return servicesService.findAll();
+    }
+
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    public Optional<Services> getServicesByUserId(@PathVariable(name = "id") long id) {
+        return servicesService.findByUserId(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)

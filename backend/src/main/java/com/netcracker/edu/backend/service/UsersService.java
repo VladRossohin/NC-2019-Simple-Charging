@@ -9,6 +9,6 @@ public interface UsersService {
     List<Users> findAll();
     Users findByLogin(String login);
     Users save(Users user);
-    void delete(Long id);
+    void delete(long id);
 
 }

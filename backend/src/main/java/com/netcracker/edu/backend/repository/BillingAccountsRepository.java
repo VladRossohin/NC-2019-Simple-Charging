@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface BillingAccountsRepository extends CrudRepository<BillingAccounts, Long> {
 
-    Optional<BillingAccounts> findByUser(Users userId);
+    Optional<BillingAccounts> findByUserId(long userId);
 
     @Override
     Iterable<BillingAccounts> findAll();

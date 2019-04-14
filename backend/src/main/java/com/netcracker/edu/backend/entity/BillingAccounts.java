@@ -1,73 +1,104 @@
 package com.netcracker.edu.backend.entity;
 
-import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.Objects;
 
 @Entity
+@Table(name = "billing_accounts", schema = "scs_database", catalog = "")
 public class BillingAccounts {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @ManyToOne
-    private Users user;
-
-    @ManyToMany
-    private Collection<Subscribes>subscribes;
-
-    private String name;
-
-    private int money;
+    private long id;
+    private long userId;
+    private String type;
+    private String number;
+    private Integer money;
+    private Users usersByUserId;
 
     public BillingAccounts() {
     }
 
-    public BillingAccounts(Users user, Collection<Subscribes> subscribes, String name, int money) {
-        this.user = user;
-        this.subscribes = subscribes;
-        this.name = name;
+    public BillingAccounts(long userId, String type, String number, Integer money) {
+        this.userId = userId;
+        this.type = type;
+        this.number = number;
         this.money = money;
     }
 
-    public Long getId() {
+    @Id
+    @Column(name = "id", nullable = false)
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public Users getUser() {
-        return user;
+    @Basic
+    @Column(name = "user_id", nullable = false, insertable = false, updatable = false)
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
-    public Collection<Subscribes> getSubscribes() {
-        return subscribes;
+    @Basic
+    @Column(name = "type", nullable = true, length = 45)
+    public String getType() {
+        return type;
     }
 
-    public void setSubscribes(Collection<Subscribes> subscribes) {
-        this.subscribes = subscribes;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getName() {
-        return name;
+    @Basic
+    @Column(name = "number", nullable = false, length = 45)
+    public String getNumber() {
+        return number;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public int getMoney() {
+    @Basic
+    @Column(name = "money", nullable = true)
+    public Integer getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(Integer money) {
         this.money = money;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BillingAccounts that = (BillingAccounts) o;
+        return id == that.id &&
+                userId == that.userId &&
+                Objects.equals(type, that.type) &&
+                Objects.equals(number, that.number) &&
+                Objects.equals(money, that.money);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userId, type, number, money);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    public Users getUsersByUserId() {
+        return usersByUserId;
+    }
+
+    public void setUsersByUserId(Users usersByUserId) {
+        this.usersByUserId = usersByUserId;
     }
 }

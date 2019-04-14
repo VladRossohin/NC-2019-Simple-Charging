@@ -22,8 +22,8 @@ public class SubscribesServiceImpl implements SubscribesService {
     }
 
     @Override
-    public Optional<Subscribes> findById(Long subscribeId) {
-        return subscribesRepository.findById(subscribeId);
+    public Optional<Subscribes> findById(long subscribeId) {
+        return (Optional<Subscribes>)subscribesRepository.findById(subscribeId);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class SubscribesServiceImpl implements SubscribesService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(long id) {
         subscribesRepository.deleteById(id);
     }
 }

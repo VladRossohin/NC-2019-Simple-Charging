@@ -11,10 +11,9 @@ import java.util.Optional;
 @Repository
 public interface ServicesRepository extends CrudRepository<Services, Long> {
 
-    Optional<Services> findByUser(Users userId);
+    Optional<Services> findByUserId(long userId);
 
-    @Override
-    Optional<Services> findById(Long id);
+    Optional<Services> findById(long id);
 
     @Override
     Iterable<Services> findAll();

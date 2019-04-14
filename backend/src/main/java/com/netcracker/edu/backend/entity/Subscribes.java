@@ -1,86 +1,118 @@
 package com.netcracker.edu.backend.entity;
 
-import org.apache.catalina.User;
-
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Date;
+import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 public class Subscribes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
-
-    @ManyToOne
-    private Users userId;
-
-    @ManyToMany
-    private Collection<Services> services;
-
-    @ManyToMany
-    private Collection<BillingAccounts> billingAccounts;
-
-    private Date subscribeDate;
-
-    private int subsribePeriod;
+    private long id;
+    private long userId;
+    private long baId;
+    private long serviceId;
+    private Date date;
+    private int period;
+    private Services servicesByServiceId;
 
     public Subscribes() {
     }
 
-    public Subscribes(Users userId, Collection<Services> services, Collection<BillingAccounts> billingAccounts, Date subscribeDate, int subsribePeriod) {
+    public Subscribes(long userId, long baId, long serviceId, Date date, int period, Services servicesByServiceId) {
         this.userId = userId;
-        this.services = services;
-        this.billingAccounts = billingAccounts;
-        this.subscribeDate = subscribeDate;
-        this.subsribePeriod = subsribePeriod;
+        this.baId = baId;
+        this.serviceId = serviceId;
+        this.date = date;
+        this.period = period;
+        this.servicesByServiceId = servicesByServiceId;
     }
 
-    public Long getId() {
-        return Id;
+    @Id
+    @Column(name = "id", nullable = false)
+    public long getId() {
+        return id;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public Users getUserId() {
+    @Basic
+    @Column(name = "user_id", nullable = false)
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(Users userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
-    public Collection<Services> getServices() {
-        return services;
+    @Basic
+    @Column(name = "ba_id", nullable = false)
+    public long getBaId() {
+        return baId;
     }
 
-    public void setServices(Collection<Services> services) {
-        this.services = services;
+    public void setBaId(long baId) {
+        this.baId = baId;
     }
 
-    public Collection<BillingAccounts> getBillingAccounts() {
-        return billingAccounts;
+    @Basic
+    @Column(name = "service_id", nullable = false, insertable = false, updatable = false)
+    public long getServiceId() {
+        return serviceId;
     }
 
-    public void setBillingAccounts(Collection<BillingAccounts> billingAccounts) {
-        this.billingAccounts = billingAccounts;
+    public void setServiceId(long serviceId) {
+        this.serviceId = serviceId;
     }
 
-    public Date getSubscribeDate() {
-        return subscribeDate;
+    @Basic
+    @Column(name = "date", nullable = false)
+    public Date getDate() {
+        return date;
     }
 
-    public void setSubscribeDate(Date subscribeDate) {
-        this.subscribeDate = subscribeDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public int getSubsribePeriod() {
-        return subsribePeriod;
+    @Basic
+    @Column(name = "period", nullable = false)
+    public int getPeriod() {
+        return period;
     }
 
-    public void setSubsribePeriod(int subsribePeriod) {
-        this.subsribePeriod = subsribePeriod;
+    public void setPeriod(int period) {
+        this.period = period;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Subscribes that = (Subscribes) o;
+        return id == that.id &&
+                userId == that.userId &&
+                baId == that.baId &&
+                serviceId == that.serviceId &&
+                period == that.period &&
+                Objects.equals(date, that.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userId, baId, serviceId, date, period);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "service_id", referencedColumnName = "id", nullable = false)
+    public Services getServicesByServiceId() {
+        return servicesByServiceId;
+    }
+
+    public void setServicesByServiceId(Services servicesByServiceId) {
+        this.servicesByServiceId = servicesByServiceId;
     }
 }

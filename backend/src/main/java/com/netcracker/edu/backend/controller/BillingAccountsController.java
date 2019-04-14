@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/api/billing-accounts")
+@RequestMapping(value = "/api/billing-account")
 public class BillingAccountsController {
     private BillingAccountsService billingAccountsService;
 
@@ -38,6 +38,7 @@ public class BillingAccountsController {
     public List<BillingAccounts> getAllBillingAccounts() {
         return billingAccountsService.findAll();
     }
+
 
     @RequestMapping(method = RequestMethod.POST)
     public BillingAccounts saveBillingAccount(@RequestBody BillingAccounts account) {

@@ -22,13 +22,13 @@ public class BillingAccountsServiceImpl implements BillingAccountsService {
     }
 
     @Override
-    public Optional<BillingAccounts> findById(Long id) {
-        return billingAccountsRepository.findById(id);
+    public Optional<BillingAccounts> findById(long id) {
+        return (Optional<BillingAccounts>)billingAccountsRepository.findById(id);
     }
 
     @Override
-    public Optional<BillingAccounts>findByUser(Users userId) {
-        return billingAccountsRepository.findByUser(userId);
+    public Optional<BillingAccounts> findByUserId(long userId) {
+        return (Optional<BillingAccounts>)billingAccountsRepository.findByUserId(userId);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class BillingAccountsServiceImpl implements BillingAccountsService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(long id) {
         billingAccountsRepository.deleteById(id);
     }
 }

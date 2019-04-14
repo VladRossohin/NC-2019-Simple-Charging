@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface SubscribesService {
 
     List<Subscribes> findAll();
-    Optional<Subscribes> findById(Long subscribeId);
+    Optional<Subscribes> findById(long subscribeId);
     Subscribes save(Subscribes subscribe);
-    void delete(Long id);
+    void delete(long id);
 }

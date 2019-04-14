@@ -13,9 +13,8 @@ public interface SubscribesRepository extends CrudRepository<Subscribes, Long> {
     @Override
     Iterable<Subscribes> findAll();
 
-    Optional<Subscribes> findByUserId(Users user);
+    Optional<Subscribes> findByUserId(long userId);
 
-    @Override
-    Optional<Subscribes> findById(Long id);
+    Optional<Subscribes> findById(long id);
 
 }

@@ -22,13 +22,13 @@ public class ServicesServiceImpl implements ServicesService {
     }
 
     @Override
-    public Optional<Services> findById(Long id) {
-        return servicesRepository.findById(id);
+    public Optional<Services> findById(long id) {
+        return (Optional<Services>)servicesRepository.findById(id);
     }
 
     @Override
-    public Optional<Services> findByUser(Users userId) {
-        return servicesRepository.findByUser(userId);
+    public Optional<Services> findByUserId(long userId) {
+        return (Optional<Services>)servicesRepository.findByUserId(userId);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class ServicesServiceImpl implements ServicesService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(long id) {
         servicesRepository.deleteById(id);
     }
 }

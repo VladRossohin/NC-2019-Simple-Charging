@@ -12,8 +12,8 @@ import java.util.Optional;
 public interface ServicesService {
 
     List<Services> findAll();
-    Optional<Services> findById(Long id);
-    Optional<Services> findByUser(Users userId);
+    Optional<Services> findById(long id);
+    Optional<Services> findByUserId(long userId);
     Services save(Services service);
-    void delete(Long id);
+    void delete(long id);
 }
