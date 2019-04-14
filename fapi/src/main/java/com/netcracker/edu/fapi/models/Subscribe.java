@@ -7,46 +7,69 @@ public class Subscribe {
 
     private Long id;
     private User user;
-    private Collection<Service> services;
-    private Collection<BillingAccount> billingAccounts;
-    private Date subscribeDate;
-    private int subscribePeriod;
+    private Service service;
+    private BillingAccount billingAccount;
+    private Date date;
+    private int period;
 
 
     public Subscribe() {
     }
 
-    public Subscribe(Long id, User user, Collection<Service> services, Collection<BillingAccount> billingAccounts, Date subscribeDate, int subscribePeriod) {
+    public Subscribe(Long id, User user, Service service, BillingAccount billingAccount, Date date, int period) {
         this.id = id;
         this.user = user;
-        this.services = services;
-        this.billingAccounts = billingAccounts;
-        this.subscribeDate = subscribeDate;
-        this.subscribePeriod = subscribePeriod;
+        this.service = service;
+        this.billingAccount = billingAccount;
+        this.date = date;
+        this.period = period;
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
+    public Long getId() {
+        return id;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public User getUser() {
+        return user;
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
+    public Service getService() {
+        return service;
+    }
+
+    public void setService(Service service) {
+        this.service = service;
+    }
+
+    public BillingAccount getBillingAccount() {
+        return billingAccount;
+    }
+
+    public void setBillingAccount(BillingAccount billingAccount) {
+        this.billingAccount = billingAccount;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public int getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(int period) {
+        this.period = period;
     }
 }

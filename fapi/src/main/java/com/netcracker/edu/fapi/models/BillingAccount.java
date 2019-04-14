@@ -7,25 +7,27 @@ public class BillingAccount {
 
     private Long id;
     private User user;
-    private String name;
+    private String type;
+    private String number;
     private int money;
 
 
     public BillingAccount() {
     }
 
-    public BillingAccount(long id, User user, String name, int money) {
+    public BillingAccount(Long id, User user, String type, String number, int money) {
         this.id = id;
         this.user = user;
-        this.name = name;
+        this.type = type;
+        this.number = number;
         this.money = money;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -37,12 +39,20 @@ public class BillingAccount {
         this.user = user;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public int getMoney() {
@@ -52,5 +62,4 @@ public class BillingAccount {
     public void setMoney(int money) {
         this.money = money;
     }
-
 }

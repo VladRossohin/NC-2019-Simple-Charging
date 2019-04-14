@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Service {
 
-    private Long id;
+    private long id;
     private String name;
     private String desctiption;
     private User user;
@@ -15,7 +15,7 @@ public class Service {
     public Service() {
     }
 
-    public Service(Long id, String name, String desctiption, User user, int cost, Date createDate) {
+    public Service(long id, String name, String desctiption, User user, int cost, Date createDate) {
         this.id = id;
         this.name = name;
         this.desctiption = desctiption;
@@ -28,7 +28,7 @@ public class Service {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

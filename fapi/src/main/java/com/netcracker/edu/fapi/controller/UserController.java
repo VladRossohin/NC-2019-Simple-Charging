@@ -20,6 +20,11 @@ public class UserController {
         return userService.findAll();
     }
 
+    @GetMapping ("/login/{login}")
+    public User getUserByLogin (@PathVariable String login) {
+        return userService.findByLogin(login);
+    }
+
  /*   @GetMapping("/login/{login}")
     public User getUserByLogin (@PathVariable String login) {
         return userService.findByLogin(login);

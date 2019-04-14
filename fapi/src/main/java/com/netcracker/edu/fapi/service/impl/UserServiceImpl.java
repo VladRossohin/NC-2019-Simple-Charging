@@ -30,8 +30,23 @@ public class UserServiceImpl implements/* UserDetailsService, */UserService {
     @Override
     public List<User> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        User[] usersResponse = restTemplate.getForObject(backendServerUrl + "/api/users", User[].class );
+        User[] usersResponse = restTemplate.getForObject(backendServerUrl + "/api/user", User[].class );
         return usersResponse == null ? Collections.emptyList() : Arrays.asList(usersResponse);
+    }
+
+    @Override
+    public User findById(long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        User userResponse = restTemplate.getForObject(backendServerUrl + "/api/user/" + id, User.class);
+        return userResponse;
+    }
+
+    @Override
+    public User findByLogin(String login) {
+        RestTemplate restTemplate = new RestTemplate();
+        User userResponse = restTemplate.getForObject(backendServerUrl + "/api/user/login/" + login, User.class);
+        return userResponse;
+
     }
 
     /*@Override
