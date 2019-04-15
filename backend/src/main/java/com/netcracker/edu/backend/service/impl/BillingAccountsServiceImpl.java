@@ -23,7 +23,7 @@ public class BillingAccountsServiceImpl implements BillingAccountsService {
 
     @Override
     public Optional<BillingAccounts> findById(long id) {
-        return (Optional<BillingAccounts>)billingAccountsRepository.findById(id);
+        return (Optional<BillingAccounts>)billingAccountsRepository.findByUserId(id);
     }
 
     @Override

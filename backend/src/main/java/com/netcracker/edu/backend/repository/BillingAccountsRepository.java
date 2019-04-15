@@ -13,6 +13,8 @@ public interface BillingAccountsRepository extends CrudRepository<BillingAccount
 
     Optional<BillingAccounts> findByUserId(long userId);
 
+    BillingAccounts findById(long id);
+
     @Override
     Iterable<BillingAccounts> findAll();
 }

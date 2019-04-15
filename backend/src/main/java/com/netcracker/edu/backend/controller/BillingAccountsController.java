@@ -1,7 +1,6 @@
 package com.netcracker.edu.backend.controller;
 
 import com.netcracker.edu.backend.entity.BillingAccounts;
-import com.netcracker.edu.backend.entity.Users;
 import com.netcracker.edu.backend.service.BillingAccountsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,7 @@ public class BillingAccountsController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<BillingAccounts> getBillingAccountById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<BillingAccounts> getBillingAccountById(@PathVariable(name = "id") long id) {
 
         Optional<BillingAccounts> billingAccount = billingAccountsService.findById(id);
 
@@ -31,6 +30,17 @@ public class BillingAccountsController {
             return ResponseEntity.notFound().build();
         }
 
+    }
+
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    public ResponseEntity<BillingAccounts> getBillingAccountsByUserId(@PathVariable(name = "id") long id) {
+        Optional<BillingAccounts> billingAccounts = billingAccountsService.findByUserId(id);
+
+        if(billingAccounts.isPresent()){
+            return ResponseEntity.ok(billingAccounts.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 
