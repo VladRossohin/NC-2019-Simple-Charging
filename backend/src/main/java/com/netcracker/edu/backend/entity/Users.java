@@ -1,5 +1,7 @@
 package com.netcracker.edu.backend.entity;
 
+import com.netcracker.edu.backend.dto.UsersDTO;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -15,6 +17,16 @@ public class Users {
     private String password;
     private Integer roleId;
     private Roles rolesByRoleId;
+
+    public UsersDTO convertToDto() {
+        UsersDTO usersDTO = new UsersDTO();
+        usersDTO.setLogin(this.login);
+        usersDTO.setFirstName(this.firstName);
+        usersDTO.setLastName(this.lastName);
+        usersDTO.setEmail(this.email);
+        usersDTO.setRole(this.rolesByRoleId.getRole());
+        return usersDTO;
+    }
 
     public Users() {
     }

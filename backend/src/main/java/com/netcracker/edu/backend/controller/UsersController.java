@@ -1,6 +1,7 @@
 package com.netcracker.edu.backend.controller;
 
 
+import com.netcracker.edu.backend.dto.UsersDTO;
 import com.netcracker.edu.backend.entity.Users;
 import com.netcracker.edu.backend.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,10 @@ public class UsersController {
     private UsersService usersService;
 
     @RequestMapping(value = "/login/{login}", method = RequestMethod.GET)
-    public ResponseEntity<Users> getUserByLogin(@PathVariable(name="login") String login) {
+    public ResponseEntity<UsersDTO> getUserByLogin(@PathVariable(name="login") String login) {
 
         Users user = usersService.findByLogin(login);
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(user.convertToDto());
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
