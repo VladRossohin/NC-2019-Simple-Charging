@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import {HomeComponent} from "./modules/layout/components/home/home.component";
 import {LayoutModule} from "./modules/layout/layout.module";
@@ -32,7 +32,8 @@ const appRoutes: Routes = [
     LayoutModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
-    HeaderModule
+    HeaderModule,
+    HttpClientModule
 
   ],
   providers: [],

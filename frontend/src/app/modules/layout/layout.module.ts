@@ -8,6 +8,7 @@ import {HeaderModule} from "../header/header.module";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule, Routes} from '@angular/router';
 import {ServiceModule} from "../service/service.module";
+import {UserModule} from "../user/user.module";
 
 /*
 const appRoutes: Routes = [
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
     HeaderModule,
     NgbModule,
     RouterModule,
-    ServiceModule
+    ServiceModule,
+    UserModule
   ],
   exports: [
     HomeComponent,
