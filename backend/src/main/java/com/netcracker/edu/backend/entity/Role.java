@@ -4,16 +4,17 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class Roles {
+@Table(name = "roles")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String role;
 
-    public Roles() {
+    public Role() {
     }
 
-    public Roles(String role) {
+    public Role(String role) {
         this.role = role;
     }
 
@@ -41,9 +42,9 @@ public class Roles {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Roles roles = (Roles) o;
-        return id == roles.id &&
-                Objects.equals(role, roles.role);
+        Role role = (Role) o;
+        return id == role.id &&
+                Objects.equals(this.role, role.role);
     }
 
     @Override

@@ -1,12 +1,11 @@
 package com.netcracker.edu.backend.entity;
 
-import com.netcracker.edu.backend.dto.UsersDTO;
-
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class Users {
+@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -16,29 +15,20 @@ public class Users {
     private String email;
     private String password;
     private Integer roleId;
-    private Roles rolesByRoleId;
+    private Role roleByRoleId;
 
-    public UsersDTO convertToDto() {
-        UsersDTO usersDTO = new UsersDTO();
-        usersDTO.setLogin(this.login);
-        usersDTO.setFirstName(this.firstName);
-        usersDTO.setLastName(this.lastName);
-        usersDTO.setEmail(this.email);
-        usersDTO.setRole(this.rolesByRoleId.getRole());
-        return usersDTO;
+
+    public User() {
     }
 
-    public Users() {
-    }
-
-    public Users(String login, String firstName, String lastName, String email, String password, Integer roleId, Roles rolesByRoleId) {
+    public User(String login, String firstName, String lastName, String email, String password, Integer roleId, Role roleByRoleId) {
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.roleId = roleId;
-        this.rolesByRoleId = rolesByRoleId;
+        this.roleByRoleId = roleByRoleId;
     }
 
     @Id
@@ -115,14 +105,14 @@ public class Users {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Users users = (Users) o;
-        return id == users.id &&
-                Objects.equals(login, users.login) &&
-                Objects.equals(firstName, users.firstName) &&
-                Objects.equals(lastName, users.lastName) &&
-                Objects.equals(email, users.email) &&
-                Objects.equals(password, users.password) &&
-                Objects.equals(roleId, users.roleId);
+        User user = (User) o;
+        return id == user.id &&
+                Objects.equals(login, user.login) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(lastName, user.lastName) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(roleId, user.roleId);
     }
 
     @Override
@@ -132,11 +122,11 @@ public class Users {
 
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id")
-    public Roles getRolesByRoleId() {
-        return rolesByRoleId;
+    public Role getRoleByRoleId() {
+        return roleByRoleId;
     }
 
-    public void setRolesByRoleId(Roles rolesByRoleId) {
-        this.rolesByRoleId = rolesByRoleId;
+    public void setRoleByRoleId(Role roleByRoleId) {
+        this.roleByRoleId = roleByRoleId;
     }
 }

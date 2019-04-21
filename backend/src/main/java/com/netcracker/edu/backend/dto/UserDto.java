@@ -1,22 +1,12 @@
 package com.netcracker.edu.backend.dto;
 
-import com.netcracker.edu.backend.entity.Users;
-
-public class UsersDTO {
+public class UserDto {
     String login;
     String firstName;
     String lastName;
     String email;
     String role;
 
-    private Users convertToEntity() {
-        Users users = new Users();
-        users.setLogin(this.login);
-        users.setFirstName(this.firstName);
-        users.setLastName(this.lastName);
-        users.setEmail(this.email);
-        return users;
-    }
 
     public String getLogin() {
         return login;

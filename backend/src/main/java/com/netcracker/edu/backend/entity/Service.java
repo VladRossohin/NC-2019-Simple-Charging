@@ -5,7 +5,8 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-public class Services {
+@Table(name = "services")
+public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -15,10 +16,10 @@ public class Services {
     private int cost;
     private Date createDate;
 
-    public Services() {
+    public Service() {
     }
 
-    public Services(long userId, String name, String description, int cost, Date createDate) {
+    public Service(long userId, String name, String description, int cost, Date createDate) {
         this.userId = userId;
         this.name = name;
         this.description = description;
@@ -90,13 +91,13 @@ public class Services {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Services services = (Services) o;
-        return id == services.id &&
-                userId == services.userId &&
-                cost == services.cost &&
-                Objects.equals(name, services.name) &&
-                Objects.equals(description, services.description) &&
-                Objects.equals(createDate, services.createDate);
+        Service service = (Service) o;
+        return id == service.id &&
+                userId == service.userId &&
+                cost == service.cost &&
+                Objects.equals(name, service.name) &&
+                Objects.equals(description, service.description) &&
+                Objects.equals(createDate, service.createDate);
     }
 
     @Override

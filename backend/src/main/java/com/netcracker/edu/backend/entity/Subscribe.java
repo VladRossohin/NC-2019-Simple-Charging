@@ -5,7 +5,8 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-public class Subscribes {
+@Table(name = "subscribes")
+public class Subscribe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -14,18 +15,19 @@ public class Subscribes {
     private long serviceId;
     private Date date;
     private int period;
-    private Services servicesByServiceId;
+    private Service serviceByServiceId;
 
-    public Subscribes() {
+
+    public Subscribe() {
     }
 
-    public Subscribes(long userId, long baId, long serviceId, Date date, int period, Services servicesByServiceId) {
+    public Subscribe(long userId, long baId, long serviceId, Date date, int period, Service serviceByServiceId) {
         this.userId = userId;
         this.baId = baId;
         this.serviceId = serviceId;
         this.date = date;
         this.period = period;
-        this.servicesByServiceId = servicesByServiceId;
+        this.serviceByServiceId = serviceByServiceId;
     }
 
     @Id
@@ -92,7 +94,7 @@ public class Subscribes {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Subscribes that = (Subscribes) o;
+        Subscribe that = (Subscribe) o;
         return id == that.id &&
                 userId == that.userId &&
                 baId == that.baId &&
@@ -108,11 +110,11 @@ public class Subscribes {
 
     @ManyToOne
     @JoinColumn(name = "service_id", referencedColumnName = "id", nullable = false)
-    public Services getServicesByServiceId() {
-        return servicesByServiceId;
+    public Service getServiceByServiceId() {
+        return serviceByServiceId;
     }
 
-    public void setServicesByServiceId(Services servicesByServiceId) {
-        this.servicesByServiceId = servicesByServiceId;
+    public void setServiceByServiceId(Service serviceByServiceId) {
+        this.serviceByServiceId = serviceByServiceId;
     }
 }

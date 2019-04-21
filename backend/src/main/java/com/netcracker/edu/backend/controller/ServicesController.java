@@ -1,11 +1,16 @@
 package com.netcracker.edu.backend.controller;
 
-import com.netcracker.edu.backend.entity.Services;
-import com.netcracker.edu.backend.service.ServicesService;
+import com.netcracker.edu.backend.dto.ServiceDto;
+import com.netcracker.edu.backend.entity.Service;
+import com.netcracker.edu.backend.service.ServiceService;
+import com.netcracker.edu.backend.service.UserService;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,44 +18,45 @@ import java.util.Optional;
 @RequestMapping(value = "/api/service")
 public class ServicesController {
 
-    private ServicesService servicesService;
-
+    private ServiceService serviceService;
+    private UserService userService;
     @Autowired
-    public ServicesController(ServicesService servicesService) {
-        this.servicesService = servicesService;
+    public ServicesController(ServiceService serviceService, UserService userService) {
+        this.serviceService = serviceService;
+        this.userService = userService;
     }
+    private ModelMapper modelMapper = new ModelMapper();
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Services> getServiceById(@PathVariable(name = "id") long id) {
-
-        Optional<Services> service = servicesService.findById(id);
-
-        if(service.isPresent()) {
-            return ResponseEntity.ok(service.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<ServiceDto> getServiceById(@PathVariable(name = "id") long id) {
+        Service service = serviceService.findById(id);
+        ServiceDto serviceDto = modelMapper.map(service, ServiceDto.class);
+        serviceDto.setUser(userService.findById(service.getUserId()).getLogin());
+        return ResponseEntity.ok(serviceDto);
 
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<Services> getAllServices() {
-        return servicesService.findAll();
+    public List<ServiceDto> getAllServices() {
+        Type listType = new TypeToken<List<ServiceDto>>(){}.getType();
+        List<Service> service = serviceService.findAll();
+        List<ServiceDto> serviceDto = modelMapper.map(service, listType);
+        return serviceDto;
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public Optional<Services> getServicesByUserId(@PathVariable(name = "id") long id) {
-        return servicesService.findByUserId(id);
+    public Optional<Service> getServicesByUserId(@PathVariable(name = "id") long id) {
+        return serviceService.findByUserId(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public Services saveService(@RequestBody Services service) {
-        return servicesService.save(service);
+    public Service saveService(@RequestBody Service service) {
+        return serviceService.save(service);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteService(@PathVariable(name = "id") Long id) {
-        servicesService.delete(id);
+        serviceService.delete(id);
     }
 
 }

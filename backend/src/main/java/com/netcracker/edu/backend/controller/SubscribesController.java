@@ -1,7 +1,7 @@
 package com.netcracker.edu.backend.controller;
 
-import com.netcracker.edu.backend.entity.Subscribes;
-import com.netcracker.edu.backend.service.SubscribesService;
+import com.netcracker.edu.backend.entity.Subscribe;
+import com.netcracker.edu.backend.service.SubscribeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,17 +13,17 @@ import java.util.Optional;
 @RequestMapping(value = "/api/subscribes")
 public class SubscribesController {
 
-    private SubscribesService subscribesService;
+    private SubscribeService subscribeService;
 
     @Autowired
-    public SubscribesController(SubscribesService subscribesService) {
-        this.subscribesService = subscribesService;
+    public SubscribesController(SubscribeService subscribeService) {
+        this.subscribeService = subscribeService;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Subscribes> getSubscribeById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Subscribe> getSubscribeById(@PathVariable(name = "id") Long id) {
 
-        Optional<Subscribes> subscribe = subscribesService.findById(id);
+        Optional<Subscribe> subscribe = subscribeService.findById(id);
 
         if(subscribe.isPresent()) {
             return ResponseEntity.ok(subscribe.get());
@@ -33,18 +33,18 @@ public class SubscribesController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<Subscribes> getAllSubscribes() {
-        return subscribesService.findAll();
+    public List<Subscribe> getAllSubscribes() {
+        return subscribeService.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public Subscribes saveSubscribe(@RequestBody Subscribes subscribe) {
-        return subscribesService.save(subscribe);
+    public Subscribe saveSubscribe(@RequestBody Subscribe subscribe) {
+        return subscribeService.save(subscribe);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteSubscribe(@PathVariable(name = "id") Long id) {
-        subscribesService.delete(id);
+        subscribeService.delete(id);
     }
 
 

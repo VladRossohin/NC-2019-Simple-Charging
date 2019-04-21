@@ -1,7 +1,10 @@
 package com.netcracker.edu.backend.controller;
 
-import com.netcracker.edu.backend.entity.BillingAccounts;
-import com.netcracker.edu.backend.service.BillingAccountsService;
+import com.netcracker.edu.backend.dto.BillingAccountDto;
+import com.netcracker.edu.backend.entity.BillingAccount;
+import com.netcracker.edu.backend.service.BillingAccountService;
+import com.netcracker.edu.backend.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,52 +15,48 @@ import java.util.Optional;
 @RestController
 @RequestMapping(value = "/api/billing-account")
 public class BillingAccountsController {
-    private BillingAccountsService billingAccountsService;
+    private BillingAccountService billingAccountService;
+    private UserService userService;
+    private ModelMapper modelMapper = new ModelMapper();
 
     @Autowired
-    public BillingAccountsController(BillingAccountsService billingAccountsService) {
-        this.billingAccountsService = billingAccountsService;
+    public BillingAccountsController(BillingAccountService billingAccountService, UserService userService) {
+        this.billingAccountService = billingAccountService;
+        this.userService = userService;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<BillingAccounts> getBillingAccountById(@PathVariable(name = "id") long id) {
+    public ResponseEntity<BillingAccountDto> getBillingAccountById(@PathVariable(name = "id") long id) {
 
-        Optional<BillingAccounts> billingAccount = billingAccountsService.findById(id);
-
-        if (billingAccount.isPresent()) {
-            return ResponseEntity.ok(billingAccount.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        BillingAccount billingAccount = billingAccountService.findById(id);
+        BillingAccountDto billingAccountDto = modelMapper.map(billingAccount, BillingAccountDto.class);
+        billingAccountDto.setUser(userService.findById(billingAccount.getUserId()).getLogin());
+        return ResponseEntity.ok(billingAccountDto);
 
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<BillingAccounts> getBillingAccountsByUserId(@PathVariable(name = "id") long id) {
-        Optional<BillingAccounts> billingAccounts = billingAccountsService.findByUserId(id);
+    public List<BillingAccount> getBillingAccountsByUserId(@PathVariable(name = "id") long id) {
+        List<BillingAccount> billingAccounts = billingAccountService.findByUserId(id);
 
-        if(billingAccounts.isPresent()){
-            return ResponseEntity.ok(billingAccounts.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return billingAccounts;
     }
 
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<BillingAccounts> getAllBillingAccounts() {
-        return billingAccountsService.findAll();
+    public List<BillingAccount> getAllBillingAccounts() {
+        return billingAccountService.findAll();
     }
 
 
     @RequestMapping(method = RequestMethod.POST)
-    public BillingAccounts saveBillingAccount(@RequestBody BillingAccounts account) {
-        return billingAccountsService.save(account);
+    public BillingAccount saveBillingAccount(@RequestBody BillingAccount account) {
+        return billingAccountService.save(account);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteBillingAccount(@PathVariable(name = "id") Long id) {
-        billingAccountsService.delete(id);
+        billingAccountService.delete(id);
     }
 }
 

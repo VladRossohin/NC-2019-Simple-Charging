@@ -1,10 +1,12 @@
 package com.netcracker.edu.backend.dto;
 
-import java.util.Date;
 
-public class ServicesDTO {
+import java.sql.Date;
+
+public class ServiceDto {
     String name;
     String description;
+    String user;
     int cost;
     Date createDate;
 
@@ -23,6 +25,14 @@ public class ServicesDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public int getCost() {

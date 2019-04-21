@@ -1,35 +1,25 @@
 package com.netcracker.edu.fapi.models;
 
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Service {
 
-    private long id;
     private String name;
-    private String desctiption;
-    private User user;
+    private String description;
+    private String user;
     private int cost;
     private Date createDate;
 
     public Service() {
     }
 
-    public Service(long id, String name, String desctiption, User user, int cost, Date createDate) {
-        this.id = id;
+    public Service(String name, String description, String user, int cost, Date createDate) {
         this.name = name;
-        this.desctiption = desctiption;
+        this.description = description;
         this.user = user;
         this.cost = cost;
         this.createDate = createDate;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -40,19 +30,19 @@ public class Service {
         this.name = name;
     }
 
-    public String getDesctiption() {
-        return desctiption;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesctiption(String desctiption) {
-        this.desctiption = desctiption;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(String user) {
         this.user = user;
     }
 

@@ -5,7 +5,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "billing_accounts", schema = "scs_database", catalog = "")
-public class BillingAccounts {
+public class BillingAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -13,12 +13,12 @@ public class BillingAccounts {
     private String type;
     private String number;
     private Integer money;
-    private Users usersByUserId;
+    private User userByUserId;
 
-    public BillingAccounts() {
+    public BillingAccount() {
     }
 
-    public BillingAccounts(long userId, String type, String number, Integer money) {
+    public BillingAccount(long userId, String type, String number, Integer money) {
         this.userId = userId;
         this.type = type;
         this.number = number;
@@ -79,7 +79,7 @@ public class BillingAccounts {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BillingAccounts that = (BillingAccounts) o;
+        BillingAccount that = (BillingAccount) o;
         return id == that.id &&
                 userId == that.userId &&
                 Objects.equals(type, that.type) &&
@@ -94,11 +94,11 @@ public class BillingAccounts {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    public Users getUsersByUserId() {
-        return usersByUserId;
+    public User getUserByUserId() {
+        return userByUserId;
     }
 
-    public void setUsersByUserId(Users usersByUserId) {
-        this.usersByUserId = usersByUserId;
+    public void setUserByUserId(User userByUserId) {
+        this.userByUserId = userByUserId;
     }
 }
