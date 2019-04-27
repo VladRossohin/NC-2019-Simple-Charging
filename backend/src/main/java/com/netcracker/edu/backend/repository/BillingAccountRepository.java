@@ -1,19 +1,27 @@
 package com.netcracker.edu.backend.repository;
 
 import com.netcracker.edu.backend.entity.BillingAccount;
+import com.netcracker.edu.backend.entity.BillingAccounts;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 
 @Repository
-public interface BillingAccountRepository extends CrudRepository<BillingAccount, Long> {
-
-    Iterable<BillingAccount> findByUserId(long userId);
-
-    BillingAccount findById(long id);
+public interface BillingAccountRepository extends JpaRepository<BillingAccounts, Long>, PagingAndSortingRepository<BillingAccounts, Long> {
 
     @Override
-    Iterable<BillingAccount> findAll();
+    Page<BillingAccounts> findAll(Pageable pageable);
+    Page<BillingAccounts> findAllByUsersByUserIdId(long userId, Pageable pageable);
+
+
+    List<BillingAccounts> findAllByUsersByUserIdId(long userId);
+
+
 }

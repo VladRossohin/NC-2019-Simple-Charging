@@ -1,6 +1,7 @@
 package com.netcracker.edu.fapi.service.impl;
 
 import com.netcracker.edu.fapi.models.Service;
+import com.netcracker.edu.fapi.models.User;
 import com.netcracker.edu.fapi.service.ServiceService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
@@ -16,10 +17,9 @@ public class ServiceServiceImpl implements ServiceService {
     private String backendServerUrl;
 
     @Override
-    public List<Service> findAll() {
+    public List<Object> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        Service[] serviceResponse = restTemplate.getForObject(backendServerUrl + "/api/service", Service[].class);
-        return serviceResponse == null ? Collections.emptyList() : Arrays.asList(serviceResponse);
+        return Arrays.asList(restTemplate.getForObject(backendServerUrl + "/api/service", Object.class));
     }
 
     @Override
@@ -30,9 +30,8 @@ public class ServiceServiceImpl implements ServiceService {
     }
 
     @Override
-    public Service findByUserId(long id) {
+    public Object findByUserId(long id) {
         RestTemplate restTemplate = new RestTemplate();
-        Service serviceResponse = restTemplate.getForObject(backendServerUrl + "/api/service/user/" + id, Service.class);
-        return serviceResponse;
+        return restTemplate.getForObject(backendServerUrl + "/api/service/user/" + id, Object.class);
     }
 }

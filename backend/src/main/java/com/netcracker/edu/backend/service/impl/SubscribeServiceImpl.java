@@ -1,9 +1,12 @@
 package com.netcracker.edu.backend.service.impl;
 
 import com.netcracker.edu.backend.entity.Subscribe;
+import com.netcracker.edu.backend.entity.Subscribes;
 import com.netcracker.edu.backend.repository.SubscribeRepository;
 import com.netcracker.edu.backend.service.SubscribeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,22 +15,26 @@ import java.util.Optional;
 @Service
 public class SubscribeServiceImpl implements SubscribeService {
 
-
     @Autowired
     private SubscribeRepository subscribeRepository;
 
     @Override
-    public List<Subscribe> findAll() {
-        return (List<Subscribe>) subscribeRepository.findAll();
+    public Page<Subscribes> findAll(Pageable pageable) {
+        return subscribeRepository.findAll(pageable);
     }
 
     @Override
-    public Optional<Subscribe> findById(long subscribeId) {
-        return (Optional<Subscribe>) subscribeRepository.findById(subscribeId);
+    public Optional<Subscribes> findById(long id) {
+        return subscribeRepository.findById(id);
     }
 
     @Override
-    public Subscribe save(Subscribe subscribe) {
+    public Page<Subscribes> findAllByUsersByUserIdId(long userId, Pageable pageable) {
+        return subscribeRepository.findAllByUsersByUserIdId(userId, pageable);
+    }
+
+    @Override
+    public Subscribes save(Subscribes subscribe) {
         return subscribeRepository.save(subscribe);
     }
 

@@ -5,8 +5,8 @@ import com.netcracker.edu.fapi.models.Service;
 import java.util.List;
 
 public interface ServiceService {
-    List<Service> findAll();
+    Object findAll();
     Service findById(long id);
-    Service findByUserId(long id);
+    Object findByUserId(long id);
 
 }

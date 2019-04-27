@@ -7,6 +7,16 @@ public class UserDto {
     String email;
     String role;
 
+    public UserDto() {
+    }
+
+    public UserDto(String login, String firstName, String lastName, String email, String role) {
+        this.login = login;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.role = role;
+    }
 
     public String getLogin() {
         return login;

@@ -16,7 +16,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public List<User> getAllUsers() {
+    public Object getAllUsers() {
         return userService.findAll();
     }
 
@@ -34,6 +34,9 @@ public class UserController {
     public User getUserByLogin (@PathVariable String login) {
         return userService.findByLogin(login);
     }*/
-
-
+/*
+    @RequestMapping(value = "/signup", method = RequestMethod.POST, produces = "application/json")
+    public User saveUser(@RequestBody User user) {
+        return userService.save(user);
+    }*/
 }

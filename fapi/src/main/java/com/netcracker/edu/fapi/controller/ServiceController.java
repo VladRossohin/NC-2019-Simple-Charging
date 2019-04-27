@@ -18,7 +18,7 @@ public class ServiceController {
     private ServiceService serviceService;
 
     @GetMapping
-    public List<Service> getAllServices() {
+    public Object getAllServices() {
         return serviceService.findAll();
     }
 
@@ -28,7 +28,7 @@ public class ServiceController {
     }
 
     @GetMapping("/user/{id}")
-    public Service getServiceByUserId(@PathVariable long id) {
+    public Object getServiceByUserId(@PathVariable long id) {
         return serviceService.findByUserId(id);
     }
 }

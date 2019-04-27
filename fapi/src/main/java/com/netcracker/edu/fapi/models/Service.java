@@ -7,17 +7,17 @@ public class Service {
 
     private String name;
     private String description;
-    private String user;
+    private String userLogin;
     private int cost;
     private Date createDate;
 
     public Service() {
     }
 
-    public Service(String name, String description, String user, int cost, Date createDate) {
+    public Service(String name, String description, String userLogin, int cost, Date createDate) {
         this.name = name;
         this.description = description;
-        this.user = user;
+        this.userLogin = userLogin;
         this.cost = cost;
         this.createDate = createDate;
     }
@@ -38,12 +38,12 @@ public class Service {
         this.description = description;
     }
 
-    public String getUser() {
-        return user;
+    public String getUserLogin() {
+        return userLogin;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUser(String userLogin) {
+        this.userLogin = userLogin;
     }
 
     public int getCost() {

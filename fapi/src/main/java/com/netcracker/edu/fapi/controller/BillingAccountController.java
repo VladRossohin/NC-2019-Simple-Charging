@@ -17,7 +17,7 @@ public class BillingAccountController {
     private BillingAccountService billingAccountService;
 
     @GetMapping
-    public List<BillingAccount> getAllBillingAccounts() {
+    public Object getAllBillingAccounts() {
         return billingAccountService.findAll();
     }
 
@@ -27,7 +27,7 @@ public class BillingAccountController {
     }
 
     @GetMapping("/user/{id}")
-    public List<BillingAccount> getBillingAccountByUserId(@PathVariable(name = "id") long id) {
+    public Object getBillingAccountByUserId(@PathVariable(name = "id") long id) {
         return billingAccountService.findByUserId(id);
     }
 }

@@ -17,10 +17,9 @@ public class BillingAccountServiceImpl implements BillingAccountService {
     private String backendServerUrl;
 
     @Override
-    public List<BillingAccount> findAll() {
+    public List<Object> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        BillingAccount[] billingAccountsResponse = restTemplate.getForObject(backendServerUrl + "/api/billing-account", BillingAccount[].class);
-        return billingAccountsResponse == null ? Collections.emptyList() : Arrays.asList(billingAccountsResponse);
+        return Arrays.asList(restTemplate.getForObject(backendServerUrl + "api/billing-account", Object.class));
     }
 
     @Override
@@ -31,9 +30,8 @@ public class BillingAccountServiceImpl implements BillingAccountService {
     }
 
     @Override
-    public List<BillingAccount> findByUserId(long id) {
+    public List<Object> findByUserId(long id) {
         RestTemplate restTemplate = new RestTemplate();
-        BillingAccount[] billingAccountsResponse = restTemplate.getForObject(backendServerUrl + "/api/billing-account/user/" + id, BillingAccount[].class);
-        return billingAccountsResponse == null ? Collections.emptyList() : Arrays.asList(billingAccountsResponse);
+        return Arrays.asList(restTemplate.getForObject(backendServerUrl + "/api/billing-account/user/" + id, Object.class));
     }
 }

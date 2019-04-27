@@ -6,10 +6,20 @@ import java.sql.Date;
 public class ServiceDto {
     String name;
     String description;
-    String user;
+    String userLogin;
     int cost;
     Date createDate;
 
+    public ServiceDto() {
+    }
+
+    public ServiceDto(String name, String description, String userLogin, int cost, Date createDate) {
+        this.name = name;
+        this.description = description;
+        this.userLogin = userLogin;
+        this.cost = cost;
+        this.createDate = createDate;
+    }
 
     public String getName() {
         return name;
@@ -27,12 +37,12 @@ public class ServiceDto {
         this.description = description;
     }
 
-    public String getUser() {
-        return user;
+    public String getUserLogin() {
+        return userLogin;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
     }
 
     public int getCost() {

@@ -4,7 +4,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;*/
 import com.netcracker.edu.fapi.models.User;
 import com.netcracker.edu.fapi.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 /*import org.springframework.security.core.userdetails.UserDetails;*/
 import org.springframework.stereotype.Service;
@@ -27,11 +26,17 @@ public class UserServiceImpl implements/* UserDetailsService, */UserService {
         return user;
     }
 */
-    @Override
+    /*@Override
     public List<User> findAll() {
         RestTemplate restTemplate = new RestTemplate();
         User[] usersResponse = restTemplate.getForObject(backendServerUrl + "/api/user", User[].class );
         return usersResponse == null ? Collections.emptyList() : Arrays.asList(usersResponse);
+    }*/
+
+    @Override
+    public Object findAll() {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(backendServerUrl + "api/user", Object.class);
     }
 
     @Override
@@ -48,6 +53,14 @@ public class UserServiceImpl implements/* UserDetailsService, */UserService {
         return userResponse;
 
     }
+/*
+
+    @Override
+    public User save(User user) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(backendServerUrl + "api/user", user, User.class).getBody();
+    }
+*/
 
     /*@Override
     public User save(User user) {

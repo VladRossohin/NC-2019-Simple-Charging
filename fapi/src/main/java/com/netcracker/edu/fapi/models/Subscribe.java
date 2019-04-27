@@ -5,10 +5,10 @@ import java.util.Date;
 
 public class Subscribe {
 
-    private Long id;
-    private User user;
-    private Service service;
-    private BillingAccount billingAccount;
+    private long id;
+    private String userLogin;
+    private String serviceName;
+    private String billingAccountNumber;
     private Date date;
     private int period;
 
@@ -16,45 +16,45 @@ public class Subscribe {
     public Subscribe() {
     }
 
-    public Subscribe(Long id, User user, Service service, BillingAccount billingAccount, Date date, int period) {
+    public Subscribe(long id, String userLogin, String serviceName, String billingAccountNumber, Date date, int period) {
         this.id = id;
-        this.user = user;
-        this.service = service;
-        this.billingAccount = billingAccount;
+        this.userLogin = userLogin;
+        this.serviceName = serviceName;
+        this.billingAccountNumber = billingAccountNumber;
         this.date = date;
         this.period = period;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public String getUserLogin() {
+        return userLogin;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
     }
 
-    public Service getService() {
-        return service;
+    public String getServiceName() {
+        return serviceName;
     }
 
-    public void setService(Service service) {
-        this.service = service;
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 
-    public BillingAccount getBillingAccount() {
-        return billingAccount;
+    public String getBillingAccountNumber() {
+        return billingAccountNumber;
     }
 
-    public void setBillingAccount(BillingAccount billingAccount) {
-        this.billingAccount = billingAccount;
+    public void setBillingAccountNumber(String billingAccountNumber) {
+        this.billingAccountNumber = billingAccountNumber;
     }
 
     public Date getDate() {

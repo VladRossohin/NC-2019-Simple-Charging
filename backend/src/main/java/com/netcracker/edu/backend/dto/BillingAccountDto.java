@@ -4,7 +4,14 @@ public class BillingAccountDto {
     String type;
     String number;
     Integer money;
-    String user;
+    String userLogin;
+
+    public BillingAccountDto(String type, String number, Integer money, String userLogin) {
+        this.type = type;
+        this.number = number;
+        this.money = money;
+        this.userLogin = userLogin;
+    }
 
     public String getType() {
         return type;
@@ -30,11 +37,11 @@ public class BillingAccountDto {
         this.money = money;
     }
 
-    public String getUser() {
-        return user;
+    public String getUserLogin() {
+        return userLogin;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
     }
 }

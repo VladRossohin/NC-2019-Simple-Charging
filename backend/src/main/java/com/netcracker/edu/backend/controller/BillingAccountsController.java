@@ -1,14 +1,20 @@
 package com.netcracker.edu.backend.controller;
 
 import com.netcracker.edu.backend.dto.BillingAccountDto;
+import com.netcracker.edu.backend.dto.Converter;
 import com.netcracker.edu.backend.entity.BillingAccount;
+import com.netcracker.edu.backend.entity.BillingAccounts;
 import com.netcracker.edu.backend.service.BillingAccountService;
 import com.netcracker.edu.backend.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,32 +31,57 @@ public class BillingAccountsController {
         this.userService = userService;
     }
 
+    @GetMapping
+    public ResponseEntity<Page<BillingAccountDto>> getAllBillingAccounts() {
+        return ResponseEntity.ok(billingAccountService.findAll(Pageable.unpaged()).map(Converter::toDto));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<BillingAccountDto> getBillingAccountById(@PathVariable long id) {
+        Optional<BillingAccounts> billingAccountsOptional = billingAccountService.findById(id);
+        if(!billingAccountsOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(Converter.toDto(billingAccountsOptional.get()));
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<Page<BillingAccountDto>> getBillingAccountsByUserId(@PathVariable long id) {
+        return ResponseEntity.ok(billingAccountService.findAllByUsersByUserIdId(id, Pageable.unpaged()).map(Converter::toDto));
+    }
+
+/*
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<BillingAccountDto> getBillingAccountById(@PathVariable(name = "id") long id) {
 
         BillingAccount billingAccount = billingAccountService.findById(id);
         BillingAccountDto billingAccountDto = modelMapper.map(billingAccount, BillingAccountDto.class);
-        billingAccountDto.setUser(userService.findById(billingAccount.getUserId()).getLogin());
         return ResponseEntity.ok(billingAccountDto);
 
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public List<BillingAccount> getBillingAccountsByUserId(@PathVariable(name = "id") long id) {
+    public List<BillingAccountDto> getBillingAccountsByUserId(@PathVariable(name = "id") long id) {
         List<BillingAccount> billingAccounts = billingAccountService.findByUserId(id);
-
-        return billingAccounts;
+        Type typeList = new TypeToken<List<BillingAccountDto>>(){}.getType();
+        List<BillingAccountDto> billingAccountDto = modelMapper.map(billingAccounts,typeList);
+        return billingAccountDto;
     }
 
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<BillingAccount> getAllBillingAccounts() {
-        return billingAccountService.findAll();
+    public List<BillingAccountDto> getAllBillingAccounts() {
+        List<BillingAccount> billingAccounts = billingAccountService.findAll();
+        Type typeList = new TypeToken<List<BillingAccountDto>>(){}.getType();
+        List<BillingAccountDto> billingAccountDto = modelMapper.map(billingAccounts, typeList);
+        return billingAccountDto;
     }
+*/
 
 
     @RequestMapping(method = RequestMethod.POST)
-    public BillingAccount saveBillingAccount(@RequestBody BillingAccount account) {
+    public BillingAccounts saveBillingAccount(@RequestBody BillingAccounts account) {
         return billingAccountService.save(account);
     }
 
