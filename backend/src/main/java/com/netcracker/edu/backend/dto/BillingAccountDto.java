@@ -1,10 +1,10 @@
 package com.netcracker.edu.backend.dto;
 
 public class BillingAccountDto {
-    String type;
-    String number;
-    Integer money;
-    String userLogin;
+    private String type;
+    private String number;
+    private Integer money;
+    private String userLogin;
 
     public BillingAccountDto(String type, String number, Integer money, String userLogin) {
         this.type = type;

@@ -12,6 +12,8 @@ export class UserDetailsComponent implements OnInit {
 
   users: User[];
   admin: User;
+  client: User;
+  ready: boolean = false;
 
   constructor(private userService: UserService) {}
 
@@ -23,7 +25,12 @@ export class UserDetailsComponent implements OnInit {
 
     this.userService.getUserByLogin("admin").subscribe(value => {
       this.admin = value;
-      console.log(this.admin.role);
+      this.ready = true;
+
+    })
+
+    this.userService.getUserByLogin("client").subscribe(value => {
+      this.client = value;
     })
 
   }

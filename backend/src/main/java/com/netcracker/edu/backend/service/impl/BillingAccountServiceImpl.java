@@ -33,6 +33,11 @@ public class BillingAccountServiceImpl implements BillingAccountService {
     }
 
     @Override
+    public BillingAccounts findByNumber(String number) {
+        return billingAccountRepository.findByNumber(number);
+    }
+
+    @Override
     public BillingAccounts save(BillingAccounts billingAccount) {
         return null;
     }

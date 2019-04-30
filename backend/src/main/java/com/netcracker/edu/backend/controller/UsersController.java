@@ -23,23 +23,15 @@ public class UsersController {
 
     private ModelMapper modelMapper = new ModelMapper();
 
+/*
     private Converter converter;
+*/
 
     @RequestMapping(value = "/login/{login}", method = RequestMethod.GET)
     public ResponseEntity<UserDto> getUserByLogin(@PathVariable(name="login") String login) {
-
-        Users user = userService.findByLogin(login);
-        UserDto userDto = modelMapper.map(user, UserDto.class);
-        return ResponseEntity.ok(userDto);
+        return ResponseEntity.ok(Converter.toDto(userService.findByLogin(login)));
     }
 
-    /*@RequestMapping(value = "", method = RequestMethod.GET)
-    public List<UserDto> getAllUsers() {
-        Type listType = new TypeToken<List<UserDto>>(){}.getType();
-        List<Users> users = userService.findAll();
-        List<UserDto> userDto = modelMapper.map(users, listType);
-        return userDto;
-    }*/
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable long id) {
@@ -58,8 +50,8 @@ public class UsersController {
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public Users saveUser(@RequestBody Users user) {
-        return userService.save(user);
+    public Users saveUser(@RequestBody UserDto userDto) {
+        return userService.save(Converter.fromDto(userDto));
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

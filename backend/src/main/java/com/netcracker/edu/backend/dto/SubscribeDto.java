@@ -5,11 +5,11 @@ import com.netcracker.edu.backend.entity.Services;
 import java.sql.Date;
 
 public class SubscribeDto {
-    String userLogin;
-    String billingAccountsNumber;
-    String ServicesName;
-    Date createDate;
-    int period;
+    private String userLogin;
+    private String billingAccountsNumber;
+    private String ServicesName;
+    private Date createDate;
+    private int period;
 
 
     public SubscribeDto() {

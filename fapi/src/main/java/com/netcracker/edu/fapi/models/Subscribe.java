@@ -1,36 +1,28 @@
 package com.netcracker.edu.fapi.models;
 
-import java.util.Collection;
-import java.util.Date;
+import java.sql.Date;
 
 public class Subscribe {
 
-    private long id;
+    /*
+        private long id;
+    */
     private String userLogin;
-    private String serviceName;
-    private String billingAccountNumber;
-    private Date date;
+    private String servicesName;
+    private String billingAccountsNumber;
+    private java.sql.Date createDate;
     private int period;
 
 
     public Subscribe() {
     }
 
-    public Subscribe(long id, String userLogin, String serviceName, String billingAccountNumber, Date date, int period) {
-        this.id = id;
+    public Subscribe(String userLogin, String servicesName, String billingAccountsNumber, java.sql.Date createDate, int period) {
         this.userLogin = userLogin;
-        this.serviceName = serviceName;
-        this.billingAccountNumber = billingAccountNumber;
-        this.date = date;
+        this.servicesName = servicesName;
+        this.billingAccountsNumber = billingAccountsNumber;
+        this.createDate = createDate;
         this.period = period;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getUserLogin() {
@@ -41,28 +33,28 @@ public class Subscribe {
         this.userLogin = userLogin;
     }
 
-    public String getServiceName() {
-        return serviceName;
+    public String getServicesName() {
+        return servicesName;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+    public void setServicesName(String servicesName) {
+        this.servicesName = servicesName;
     }
 
-    public String getBillingAccountNumber() {
-        return billingAccountNumber;
+    public String getBillingAccountsNumber() {
+        return billingAccountsNumber;
     }
 
-    public void setBillingAccountNumber(String billingAccountNumber) {
-        this.billingAccountNumber = billingAccountNumber;
+    public void setBillingAccountsNumber(String billingAccountsNumber) {
+        this.billingAccountsNumber = billingAccountsNumber;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public int getPeriod() {

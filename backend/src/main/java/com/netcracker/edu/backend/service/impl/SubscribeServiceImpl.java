@@ -34,6 +34,11 @@ public class SubscribeServiceImpl implements SubscribeService {
     }
 
     @Override
+    public Optional<Subscribes> findByUsersByUserIdLogin(String login) {
+        return subscribeRepository.findByUsersByUserIdLogin(login);
+    }
+
+    @Override
     public Subscribes save(Subscribes subscribe) {
         return subscribeRepository.save(subscribe);
     }

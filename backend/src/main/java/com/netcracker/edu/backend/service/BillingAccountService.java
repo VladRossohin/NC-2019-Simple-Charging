@@ -14,7 +14,8 @@ public interface BillingAccountService {
 
     Page<BillingAccounts> findAll(Pageable pageable);
     Page<BillingAccounts> findAllByUsersByUserIdId(long userId, Pageable pageable);
-    Optional<BillingAccounts> findById(long id);;
+    Optional<BillingAccounts> findById(long id);
+    BillingAccounts findByNumber(String number);
     BillingAccounts save(BillingAccounts billingAccount);
     void delete(long id);
 

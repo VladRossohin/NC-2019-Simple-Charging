@@ -3,6 +3,7 @@ export class User {
   login: string;
   firstName: string;
   lastName: string;
+  password: string;
   email: string;
   role: string;
   static cloneBase(user: User) {
@@ -11,6 +12,7 @@ export class User {
     clonedUser.login = user.login;
     clonedUser.firstName = user.firstName;
     clonedUser.lastName = user.lastName;
+    clonedUser.password = user.password;
     clonedUser.email = user.email;
     clonedUser.role = user.role;
 

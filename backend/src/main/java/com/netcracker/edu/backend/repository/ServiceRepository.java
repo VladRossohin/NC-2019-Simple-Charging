@@ -26,4 +26,6 @@ public interface ServiceRepository extends JpaRepository<Services, Long>, Paging
     List<Services> findByUsersByUserId(long id);
 
     List<Services> findAllByUsersByUserIdId(long id);
+
+    Services findByName(String name);
 }

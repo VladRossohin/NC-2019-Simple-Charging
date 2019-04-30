@@ -53,7 +53,20 @@ public class UserServiceImpl implements/* UserDetailsService, */UserService {
         return userResponse;
 
     }
-/*
+
+    @Override
+    public User save(User user) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(backendServerUrl + "/api/user", user, User.class).getBody();
+    }
+
+    @Override
+    public void delete(long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "/api/user/" + id);
+    }
+
+    /*
 
     @Override
     public User save(User user) {

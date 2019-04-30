@@ -16,6 +16,9 @@ export class UserService {
     return this.http.get<User>(`/api/user/login/${login}`);
   }
 
+  saveUser(user: User): Observable<User> {
+    return this.http.post<User>(`/api/user`, user);
+  }
 
 
 }

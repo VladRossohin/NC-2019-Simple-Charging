@@ -11,11 +11,14 @@ import {LoginComponent} from "./modules/layout/components/login/login.component"
 import {RegisterComponent} from "./modules/layout/components/register/register.component";
 import {NotFoundComponent} from "./modules/layout/components/not-found/not-found.component";
 import {AccountComponent} from "./modules/layout/components/account/account.component";
+import {BillingAccountModule} from "./modules/billing-account/billing-account.module";
+import {ServiceViewComponent} from "./modules/layout/components/service-view/service-view.component";
 
 const appRoutes: Routes = [
 
   {path: "", component: HomeComponent},
   {path: "home", component: HomeComponent},
+  {path: "service/:id", component: ServiceViewComponent},
   {path: "account", component: AccountComponent},
   {path: "login", component: LoginComponent},
   {path: "register", component: RegisterComponent},
@@ -33,6 +36,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
     HeaderModule,
+    BillingAccountModule,
     HttpClientModule
 
   ],

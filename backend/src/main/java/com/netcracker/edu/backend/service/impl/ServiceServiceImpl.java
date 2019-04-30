@@ -42,6 +42,11 @@ public class ServiceServiceImpl implements ServiceService {
     }
 
     @Override
+    public Services findByName(String name) {
+        return serviceRepository.findByName(name);
+    }
+
+    @Override
     public Services save(Services service) {
         return serviceRepository.save(service);
     }

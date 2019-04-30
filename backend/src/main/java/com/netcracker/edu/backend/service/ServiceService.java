@@ -16,6 +16,7 @@ public interface ServiceService {
     Optional<Services> findById(long id);
     List<Services> findByUsersByUserId(long id);
     List<Services> findAllByUsersByUserIdId(long id);
+    Services findByName(String name);
     Services save(Services service);
     void delete(long id);
 }

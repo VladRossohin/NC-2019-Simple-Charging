@@ -1,4 +1,4 @@
-<div class="service-column">
+<!--<div class="service-column">
   <div class="name">
     <h3>Microsoft Office</h3>
   </div>
@@ -8,4 +8,22 @@
   <div class="price">
     <hr><h4>$4/a day</h4></div>
   <a href="#" class="btn btn-primary subscribe-bottom" data-toggle="modal" data-target="#subscribe-modal">Subscribe</a>
+</div>-->
+<div class="service-column" *ngFor="let service of services">
+  <div class="name">
+    <h3>{{service.name}}</h3>
+  </div>
+  <div class="description">
+    {{service.description}}
+  </div>
+  <div class="user">
+    Created by <b>{{service.user}}</b>
+  </div>
+  <div class="price">
+    <hr>
+    <h4>
+      ${{service.cost}}/a day
+    </h4>
+  </div>
+  <a href="" class="btn btn-primary subscribe-bottom">Subscribe</a>
 </div>

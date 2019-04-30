@@ -20,6 +20,7 @@ public interface BillingAccountRepository extends JpaRepository<BillingAccounts,
     Page<BillingAccounts> findAll(Pageable pageable);
     Page<BillingAccounts> findAllByUsersByUserIdId(long userId, Pageable pageable);
 
+    BillingAccounts findByNumber(String number);
 
     List<BillingAccounts> findAllByUsersByUserIdId(long userId);
 

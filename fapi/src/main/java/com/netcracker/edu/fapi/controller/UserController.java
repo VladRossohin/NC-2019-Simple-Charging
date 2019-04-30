@@ -3,6 +3,7 @@ package com.netcracker.edu.fapi.controller;
 import com.netcracker.edu.fapi.models.User;
 import com.netcracker.edu.fapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +29,19 @@ public class UserController {
     @GetMapping ("/login/{login}")
     public User getUserByLogin (@PathVariable String login) {
         return userService.findByLogin(login);
+    }
+
+    @PostMapping
+    public User saveUser(@RequestBody User user) {
+        if(user != null) {
+            return userService.save(user);
+        }
+        return null;
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUserById(@PathVariable long id) {
+        userService.delete(id);
     }
 
  /*   @GetMapping("/login/{login}")

@@ -50,6 +50,7 @@ public class BillingAccountsController {
         return ResponseEntity.ok(billingAccountService.findAllByUsersByUserIdId(id, Pageable.unpaged()).map(Converter::toDto));
     }
 
+
 /*
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -81,8 +82,8 @@ public class BillingAccountsController {
 
 
     @RequestMapping(method = RequestMethod.POST)
-    public BillingAccounts saveBillingAccount(@RequestBody BillingAccounts account) {
-        return billingAccountService.save(account);
+    public BillingAccounts saveBillingAccount(@RequestBody BillingAccountDto billingAccountDto) {
+        return billingAccountService.save(Converter.fromDto(billingAccountDto));
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

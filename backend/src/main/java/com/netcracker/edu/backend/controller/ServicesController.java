@@ -84,8 +84,8 @@ public class ServicesController {
 */
 
     @RequestMapping(method = RequestMethod.POST)
-    public Services saveService(@RequestBody Services service) {
-        return serviceService.save(service);
+    public Services saveService(@RequestBody ServiceDto serviceDto) {
+        return serviceService.save(Converter.fromDto(serviceDto));
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

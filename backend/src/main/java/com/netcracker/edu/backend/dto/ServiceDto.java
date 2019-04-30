@@ -4,11 +4,11 @@ package com.netcracker.edu.backend.dto;
 import java.sql.Date;
 
 public class ServiceDto {
-    String name;
-    String description;
-    String userLogin;
-    int cost;
-    Date createDate;
+    private String name;
+    private String description;
+    private String userLogin;
+    private int cost;
+    private Date createDate;
 
     public ServiceDto() {
     }

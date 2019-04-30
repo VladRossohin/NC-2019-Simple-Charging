@@ -47,6 +47,15 @@ public class SubscribesController {
         return ResponseEntity.ok(subscribeService.findAllByUsersByUserIdId(id, Pageable.unpaged()).map(Converter::toDto));
     }
 
+    @GetMapping("/user/login/{login}")
+    public ResponseEntity<SubscribeDto> getSubscribeByUserLogin(@PathVariable String login) {
+        Optional<Subscribes> subscribesOptional = subscribeService.findByUsersByUserIdLogin(login);
+        if(!subscribesOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(Converter.toDto(subscribesOptional.get()));
+    }
+
     /*
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -72,8 +81,8 @@ public class SubscribesController {
 */
 
     @RequestMapping(method = RequestMethod.POST)
-    public Subscribes saveSubscribe(@RequestBody Subscribes subscribe) {
-        return subscribeService.save(subscribe);
+    public Subscribes saveSubscribe(@RequestBody SubscribeDto subscribeDto) {
+        return subscribeService.save(Converter.fromDto(subscribeDto));
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

@@ -1,3 +1,6 @@
-<p>
-  billing-details works!
-</p>
+<div *ngIf = ready>
+  <h4>{{clientBA.type}}</h4>
+  <h5>{{clientBA.number}}</h5>
+  <h5><b>{{clientBA.money}}$</b></h5>
+  <a href="" class="offset-1"><h4 style="color: #f85c35">Deposit</h4></a>
+</div>

@@ -15,6 +15,17 @@ public class Subscribes {
     private BillingAccounts billingAccountsByBaId;
     private Services servicesByServiceId;
 
+    public Subscribes() {
+    }
+
+    public Subscribes(Date date, int period, Users usersByUserId, BillingAccounts billingAccountsByBaId, Services servicesByServiceId) {
+        this.date = date;
+        this.period = period;
+        this.usersByUserId = usersByUserId;
+        this.billingAccountsByBaId = billingAccountsByBaId;
+        this.servicesByServiceId = servicesByServiceId;
+    }
+
     @Id
     @Column(name = "id", nullable = false)
     public long getId() {

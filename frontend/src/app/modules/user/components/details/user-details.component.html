@@ -1,6 +1,28 @@
-{{admin?.login}}
-{{admin?.firstName}}
-{{admin?.lastName}}
-{{admin?.email}}
-{{admin?.role}}
+<div *ngIf = "ready">
 
+  <div class="login">
+    <h1>
+      {{client.login}}
+    </h1>
+  </div>
+
+  <div class="firstname">
+    <h4>First name: </h4>
+    <h5><b>{{client.firstName}}</b></h5>
+  </div>
+
+  <div class="lastname">
+    <h4>Last name:  </h4>
+    <b>{{client.lastName}}</b>
+  </div>
+
+  <div class="email">
+    <h4>Email:  </h4>
+    <h5><b>{{client.email}}</b></h5>
+  </div>
+
+  <div class="role">
+    <h4>Your role:  </h4>
+    <b>{{client.role}}</b>
+  </div>
+</div>
