@@ -34,4 +34,12 @@ public class ServiceServiceImpl implements ServiceService {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(backendServerUrl + "/api/service/user/" + id, Object.class);
     }
+
+
+
+    @Override
+    public void deleteById(long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "/api/service/" + id);
+    }
 }

@@ -1,6 +1,14 @@
-<div *ngIf = ready>
-  <h4>{{clientBA.type}}</h4>
-  <h5>{{clientBA.number}}</h5>
-  <h5><b>{{clientBA.money}}$</b></h5>
-  <a href="" class="offset-1"><h4 style="color: #f85c35">Deposit</h4></a>
+<div class="align-self-begin" id="ba-container">
+  <h3>Billing accounts:</h3>
+  <div *ngFor="let ba of clientBA" class="offset-1">
+    <h4 class=""><b>{{ba.type}}</b></h4>
+    <h5>{{ba.number}}</h5>
+    <div class="">
+      <h5><b>{{ba.money}}$</b></h5>
+      <a href="" class="btn-link"><h5 style="color: #f85c35">Deposit</h5></a>
+    </div>
+  </div>
+
+  <div class="btn btn-primary">Add billing account</div>
+
 </div>

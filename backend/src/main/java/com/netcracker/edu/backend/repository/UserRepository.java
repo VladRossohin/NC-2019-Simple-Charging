@@ -31,4 +31,6 @@ public interface UserRepository extends JpaRepository<Users, Long>, PagingAndSor
 
     @Override
     List<Users> findAll();
+
+    void deleteByLogin(String login);
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SubscribeService  {
     Object findAll();
-    ResponseEntity<Subscribe> findByUserLogin(String login);
+    Object findByUserLogin(String login);
 
 
 }

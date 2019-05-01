@@ -8,5 +8,6 @@ public interface ServiceService {
     Object findAll();
     Service findById(long id);
     Object findByUserId(long id);
+    void deleteById(long id);
 
 }

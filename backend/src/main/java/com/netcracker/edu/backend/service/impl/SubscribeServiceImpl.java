@@ -34,8 +34,8 @@ public class SubscribeServiceImpl implements SubscribeService {
     }
 
     @Override
-    public Optional<Subscribes> findByUsersByUserIdLogin(String login) {
-        return subscribeRepository.findByUsersByUserIdLogin(login);
+    public Page<Subscribes> findAllByUsersByUserIdLogin(String login, Pageable pageable) {
+        return subscribeRepository.findAllByUsersByUserIdLogin(login, pageable);
     }
 
     @Override

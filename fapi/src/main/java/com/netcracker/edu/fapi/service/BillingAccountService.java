@@ -8,6 +8,7 @@ public interface BillingAccountService {
     Object findAll();
     BillingAccount findById(long id);
     Object findByUserId(long id);
+    Object findByUserLogin(String login);
 
 
 }

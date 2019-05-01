@@ -50,6 +50,10 @@ public class BillingAccountsController {
         return ResponseEntity.ok(billingAccountService.findAllByUsersByUserIdId(id, Pageable.unpaged()).map(Converter::toDto));
     }
 
+    @GetMapping("/user/login/{login}")
+    public ResponseEntity<Page<BillingAccountDto>> getBillingAccountsByUserLogin(@PathVariable String login) {
+        return ResponseEntity.ok(billingAccountService.findAllByUsersByUserIdLogin(login, Pageable.unpaged()).map(Converter::toDto));
+    }
 
 /*
 

@@ -28,6 +28,11 @@ public class BillingAccountServiceImpl implements BillingAccountService {
     }
 
     @Override
+    public Page<BillingAccounts> findAllByUsersByUserIdLogin(String login, Pageable pageable) {
+        return billingAccountRepository.findAllByUsersByUserIdLogin(login, pageable);
+    }
+
+    @Override
     public Optional<BillingAccounts> findById(long id) {
         return billingAccountRepository.findById(id);
     }

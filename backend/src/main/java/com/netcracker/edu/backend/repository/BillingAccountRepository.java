@@ -19,8 +19,9 @@ public interface BillingAccountRepository extends JpaRepository<BillingAccounts,
     @Override
     Page<BillingAccounts> findAll(Pageable pageable);
     Page<BillingAccounts> findAllByUsersByUserIdId(long userId, Pageable pageable);
-
+    Page<BillingAccounts> findAllByUsersByUserIdLogin(String login, Pageable pageable);
     BillingAccounts findByNumber(String number);
+
 
     List<BillingAccounts> findAllByUsersByUserIdId(long userId);
 

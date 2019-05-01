@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Service} from "../models/service";
-import {ServiceService} from "../../../services/service.service";
+import {ServiceService} from "../../../../services/service.service";
 import {Subscription} from "rxjs/internal/Subscription";
 import {ActivatedRoute, Router} from '@angular/router';
+import {Service} from '../../models/service';
 
 @Component({
   selector: 'app-service',
@@ -13,8 +13,6 @@ export class ServiceComponent implements OnInit {
 
   private subscribtions: Subscription[] = [];
   services: Service[];
-  testService: Service;
-  testService1: Service;
 
   ready: boolean = false;
 
@@ -39,16 +37,5 @@ export class ServiceComponent implements OnInit {
 
   }
 
-/*
-
-    this.serviceService.getServiceById(1).subscribe(value => {
-      this.testService = value;
-    });
-
-    this.serviceService.getServiceById(2).subscribe(value => {
-      this.testService1 = value;
-    });
-  }
-*/
 
 }

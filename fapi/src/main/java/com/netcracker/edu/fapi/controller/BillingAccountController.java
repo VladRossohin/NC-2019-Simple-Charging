@@ -30,4 +30,9 @@ public class BillingAccountController {
     public Object getBillingAccountByUserId(@PathVariable(name = "id") long id) {
         return billingAccountService.findByUserId(id);
     }
+
+    @GetMapping("/user/login/{login}")
+    public Object getBillingAccountsByUserLogin(@PathVariable(name="login") String login) {
+        return billingAccountService.findByUserLogin(login);
+    }
 }

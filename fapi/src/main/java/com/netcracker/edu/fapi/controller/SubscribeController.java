@@ -18,7 +18,7 @@ public class SubscribeController {
     private SubscribeService subscribeService;
 
     @GetMapping("/user/login/{login}")
-    public ResponseEntity<Subscribe> getSubscribeByUserLogin(@PathVariable String login) {
+    public Object getSubscribeByUserLogin(@PathVariable String login) {
         return subscribeService.findByUserLogin(login);
     }
 

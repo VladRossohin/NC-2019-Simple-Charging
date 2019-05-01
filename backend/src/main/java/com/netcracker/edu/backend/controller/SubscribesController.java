@@ -48,12 +48,8 @@ public class SubscribesController {
     }
 
     @GetMapping("/user/login/{login}")
-    public ResponseEntity<SubscribeDto> getSubscribeByUserLogin(@PathVariable String login) {
-        Optional<Subscribes> subscribesOptional = subscribeService.findByUsersByUserIdLogin(login);
-        if(!subscribesOptional.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(Converter.toDto(subscribesOptional.get()));
+    public ResponseEntity<Page<SubscribeDto>> getSubscribeByUserLogin(@PathVariable String login) {
+        return ResponseEntity.ok(subscribeService.findAllByUsersByUserIdLogin(login, Pageable.unpaged()).map(Converter::toDto));
     }
 
     /*

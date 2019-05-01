@@ -3,10 +3,7 @@ package com.netcracker.edu.fapi.controller;
 import com.netcracker.edu.fapi.models.Service;
 import com.netcracker.edu.fapi.service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,5 +27,10 @@ public class ServiceController {
     @GetMapping("/user/{id}")
     public Object getServiceByUserId(@PathVariable long id) {
         return serviceService.findByUserId(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteServiceById(@PathVariable(name="id") long id){
+        serviceService.deleteById(id);
     }
 }

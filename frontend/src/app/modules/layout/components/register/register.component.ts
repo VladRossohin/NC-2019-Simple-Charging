@@ -30,11 +30,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      login: ['', Validators.required],
+      login: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.]+$')]],
       firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-      role: ['', Validators.required],
+      role: ['SUBSCRIBER', Validators.required],
       password: ['', [Validators.required, Validators.minLength(4)]]
     });
   }
@@ -51,11 +51,13 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
     this.userService.saveUser(this.registerForm.value)
-      .pipe(first())
+      .pipe()
       .subscribe(
         data => {
           this.alertService.success('Registration succesful', true);
-          this.router.navigate(['/login']);
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 1000);
         },
         error => {
           this.alertService.error(error);
@@ -63,11 +65,6 @@ export class RegisterComponent implements OnInit {
         }
       )
 
-  }
-
-  public _addUser(): void {
-    this.subscriptions.push(this.userService.saveUser(this.user).subscribe(
-    ));
   }
 
 }

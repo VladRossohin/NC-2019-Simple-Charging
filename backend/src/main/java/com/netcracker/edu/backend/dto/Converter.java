@@ -67,6 +67,7 @@ public class Converter {
     public static ServiceDto toDto(Services service) {
 
         return new ServiceDto(
+                service.getId(),
                 service.getName(),
                 service.getDescription(),
                 service.getUsersByUserId().getLogin(),

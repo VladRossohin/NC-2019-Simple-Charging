@@ -59,6 +59,11 @@ public class UsersController {
         userService.delete(id);
     }
 
+    @DeleteMapping("/{login}")
+    public void deleteUserByLogin(@PathVariable String login) {
+        userService.deleteByLogin(login);
+    }
+
 
 
 }

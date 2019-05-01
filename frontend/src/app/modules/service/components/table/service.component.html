@@ -1,0 +1,18 @@
+<div class="main-content row justify-content-center">
+<div class="service-column" *ngFor="let service of services">
+  <div class="name">
+    <h3>{{service.name}}</h3>
+  </div>
+
+  <div class="description">
+    {{service.description}}
+  </div>
+  <div class="price">
+    <hr>
+    <h4>
+      ${{service.cost}}/a day
+    </h4>
+  </div>
+  <a href="" class="btn btn-primary subscribe-bottom">Subscribe</a>
+</div>
+</div>

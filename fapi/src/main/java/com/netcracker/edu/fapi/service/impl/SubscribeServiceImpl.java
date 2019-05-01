@@ -19,10 +19,9 @@ public class SubscribeServiceImpl implements SubscribeService {
 
 
     @Override
-    public ResponseEntity<Subscribe> findByUserLogin(String login) {
+    public Object findByUserLogin(String login) {
         RestTemplate restTemplate = new RestTemplate();
-        Subscribe subscribeResponse = restTemplate.getForObject(backendServerUrl + "/api/subscribe/user/login/" + login, Subscribe.class);
-        return ResponseEntity.ok(subscribeResponse);
+        return Arrays.asList(restTemplate.getForObject(backendServerUrl + "/api/subscribe/user/login/" + login, Object.class));
     }
 
     @Override

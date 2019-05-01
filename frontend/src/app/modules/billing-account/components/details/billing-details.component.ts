@@ -10,7 +10,7 @@ import {BaService} from "../../../../services/ba.service";
 export class BillingDetailsComponent implements OnInit {
 
   testBA: BillingAccount;
-  clientBA: BillingAccount;
+  clientBA: BillingAccount[];
   ready: boolean = false;
 
   constructor(private baService: BaService) { }
@@ -21,9 +21,10 @@ export class BillingDetailsComponent implements OnInit {
       this.testBA = value;
     })
 
-    this.baService.getBillingAccountById(2).subscribe(value => {
-      this.clientBA = value;
+    this.baService.getBillingAccountsByUserLogin("client").subscribe((value: any)=> {
+      this.clientBA = value[0].content;
       this.ready = true;
+
     })
   }
 

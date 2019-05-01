@@ -9,6 +9,7 @@
         <input type="text" id="login" formControlName="login" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.login.errors }" />
         <div *ngIf="submitted && f.login.errors" class="invalid-custom">
           <div *ngIf="f.login.errors.required">Login is required</div>
+          <div *ngIf="f.login.errors.pattern">Please enter correct login</div>
         </div>
       </div>
     </div>
@@ -25,10 +26,9 @@
     <div class="form-group">
       <label for="firstName" class="control-label col-xs-4">First Name</label>
       <input type="text" id="firstName" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-      <div *ngIf="submitted && registerForm.errors" class="invalid-custom">
-        <div *ngIf="f.firstName.errors.required">
-          First Name is required
-        </div>
+      <div *ngIf="submitted && f.firstName.errors" class="invalid-custom">
+        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        <div *ngIf="f.firstName.errors.pattern">Please enter correct First Name</div>
       </div>
     </div>
     <div class="form-group">
@@ -36,14 +36,18 @@
       <input type="text" id="lastName" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors}" />
       <div *ngIf="submitted && f.lastName.errors" class="invalid-custom">
         <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        <div *ngIf="f.lastName.errors.pattern">Please enter correct Last Name</div>
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-xs-4">Select Your role</label> <br>
-      <input id="radioSubscriber" type="radio" name="role" class="" value="SUBSCRIBER" checked="checked" formControlName="role" />
+      <input id="radioSubscriber" formControlName="role" type="radio" name="role" class="roleRadio" value="SUBSCRIBER" checked="checked" formControlName="role" />
         <label for="radioSubscriber" style="padding-left: 5px"> <h6> SUBSCRIBER</h6></label> <br>
-      <input id="ragioAuthor" type="radio" name="role"  class="" value="AUTHOR" formControlName="role">
-        <label for="ragioAuthor" style="padding-left: 5px"> <h6> AUTHOR</h6></label>
+      <input id="radioAuthor" formControlName="role" type="radio" name="role"  class="roleRadio" value="AUTHOR" formControlName="role">
+        <label for="radioAuthor" style="padding-left: 5px"> <h6> AUTHOR</h6></label>
+      <div *ngIf="submitted && f.role.errors" class="invalid-custom">
+        <div *ngIf="f.role.errors.required">Please choose Your role</div>
+      </div>
 
     </div>
     <div class="form-group">
@@ -68,6 +72,7 @@
         <p><label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>.</label></p>
         <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
       </div>-->
+      <div *ngIf=loading class="invalid-custom">Register successful!</div>
     </div>
   </form>
   <div class="text-center">Already have an account? <a routerLink="../login">Login here</a></div>

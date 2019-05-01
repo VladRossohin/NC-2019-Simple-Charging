@@ -20,5 +20,6 @@ public interface UserService {
     Optional<Users> findById(long id);
     Users save(Users user);
     void delete(long id);
+    void deleteByLogin(String login);
 
 }
