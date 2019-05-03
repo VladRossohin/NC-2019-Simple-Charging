@@ -108,6 +108,7 @@ public class Converter {
                 subscribe.getUsersByUserId().getLogin(),
                 subscribe.getBillingAccountsByBaId().getNumber(),
                 subscribe.getServicesByServiceId().getId(),
+                subscribe.getServicesByServiceId().getName(),
                 subscribe.getDate(),
                 subscribe.getPeriod()
         );

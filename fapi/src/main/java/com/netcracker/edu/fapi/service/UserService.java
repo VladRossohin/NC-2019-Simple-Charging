@@ -12,4 +12,5 @@ public interface UserService {
     User findByLogin(String login);
     User save(User user);
     void delete(long id);
+    void deleteByLogin(String login);
 }

@@ -39,6 +39,24 @@ public class SubscribeServiceImpl implements SubscribeService {
     @Override
     public void deleteById(long id) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServerUrl + "/api/service/" + id);
+        restTemplate.delete(backendServerUrl + "/api/subscribe/" + id);
+    }
+
+    @Override
+    public void deleteByBaNumber(String number) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "/api/subscribe/ba/" + number);
+    }
+
+    @Override
+    public void deleteByUserLogin(String login) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "api/subscribe/user/" + login);
+    }
+
+    @Override
+    public void deleteByServiceId(long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "/api/subscribe/service/" + id);
     }
 }

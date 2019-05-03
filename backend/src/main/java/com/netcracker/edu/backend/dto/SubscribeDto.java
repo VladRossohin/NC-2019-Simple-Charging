@@ -7,6 +7,7 @@ public class SubscribeDto {
     private String userLogin;
     private String billingAccountNumber;
     private long serviceId;
+    private String serviceName;
     private Date createDate;
     private int period;
 
@@ -14,11 +15,12 @@ public class SubscribeDto {
     public SubscribeDto() {
     }
 
-    public SubscribeDto(long id, String userLogin, String billingAccountNumber, long serviceId, Date createDate, int period) {
+    public SubscribeDto(long id, String userLogin, String billingAccountNumber, long serviceId, String serviceName, Date createDate, int period) {
         this.id = id;
         this.userLogin = userLogin;
         this.billingAccountNumber = billingAccountNumber;
         this.serviceId = serviceId;
+        this.serviceName = serviceName;
         this.createDate = createDate;
         this.period = period;
     }
@@ -53,6 +55,14 @@ public class SubscribeDto {
 
     public void setServiceId(long serviceId) {
         this.serviceId = serviceId;
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 
     public Date getCreateDate() {

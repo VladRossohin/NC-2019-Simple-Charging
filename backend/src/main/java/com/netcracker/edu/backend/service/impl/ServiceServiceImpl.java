@@ -60,4 +60,8 @@ public class ServiceServiceImpl implements ServiceService {
         serviceRepository.deleteById(id);
     }
 
+    @Override
+    public void deleteByUserLogin(String login) {
+        serviceRepository.deleteAllByUsersByUserIdLogin(login);
+    }
 }

@@ -66,6 +66,12 @@ public class UserServiceImpl implements/* UserDetailsService, */UserService {
         restTemplate.delete(backendServerUrl + "/api/user/" + id);
     }
 
+    @Override
+    public void deleteByLogin(String login) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "/api/user/login/" + login);
+    }
+
     /*
 
     @Override

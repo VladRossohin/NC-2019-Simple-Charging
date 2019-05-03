@@ -10,6 +10,7 @@ public interface SubscribeService  {
     Object findByUserLogin(String login);
     Subscribe save(Subscribe subscribe);
     void deleteById(long id);
-
-
+    void deleteByBaNumber(String number);
+    void deleteByUserLogin(String login);
+    void deleteByServiceId(long id);
 }

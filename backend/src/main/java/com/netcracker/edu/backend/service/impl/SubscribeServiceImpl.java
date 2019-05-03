@@ -47,4 +47,19 @@ public class SubscribeServiceImpl implements SubscribeService {
     public void delete(long id) {
         subscribeRepository.deleteById(id);
     }
+
+    @Override
+    public void deleteByBaNumber(String number) {
+        subscribeRepository.deleteAllByBillingAccountsByBaIdNumber(number);
+    }
+
+    @Override
+    public void deleteByUserLogin(String login) {
+        subscribeRepository.deleteAllByUsersByUserIdLogin(login);
+    }
+
+    @Override
+    public void deleteByServiceId(long id) {
+        subscribeRepository.deleteAllByServicesByServiceIdId(id);
+    }
 }

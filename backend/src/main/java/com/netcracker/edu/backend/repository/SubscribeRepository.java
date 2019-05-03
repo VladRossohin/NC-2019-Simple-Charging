@@ -29,4 +29,5 @@ public interface SubscribeRepository extends JpaRepository<Subscribes, Long>, Pa
 
     void deleteAllByUsersByUserIdLogin(String login);
 
+    void deleteAllByServicesByServiceIdId(long id);
 }

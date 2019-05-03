@@ -96,4 +96,8 @@ public class ServicesController {
         serviceService.delete(id);
     }
 
+    @DeleteMapping("/user/{login}")
+    public void deleteServiceByUserLogin(@PathVariable String login) {
+        serviceService.deleteByUserLogin(login);
+    }
 }

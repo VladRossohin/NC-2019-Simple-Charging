@@ -26,5 +26,8 @@ public interface BillingAccountRepository extends JpaRepository<BillingAccounts,
 
     List<BillingAccounts> findAllByUsersByUserIdId(long userId);
 
-    void deleteByUsersByUserIdLogin(String login);
+    void deleteAllByUsersByUserIdLogin(String login);
+    void deleteByNumber(String number);
+
 }
+

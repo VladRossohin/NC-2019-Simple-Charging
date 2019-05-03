@@ -52,4 +52,10 @@ public class ServiceServiceImpl implements ServiceService {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/service/" + id);
     }
+
+    @Override
+    public void deleteByUserLogin(String login) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "/api/service/user/" + login);
+    }
 }

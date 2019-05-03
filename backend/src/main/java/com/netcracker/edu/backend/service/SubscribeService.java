@@ -17,4 +17,7 @@ public interface SubscribeService {
     Page<Subscribes> findAllByUsersByUserIdLogin(String login, Pageable pageable);
     Subscribes save(Subscribes subscribe);
     void delete(long id);
+    void deleteByBaNumber(String number);
+    void deleteByUserLogin(String login);
+    void deleteByServiceId(long id);
 }

@@ -6,6 +6,7 @@ public class Subscribe {
 
     private long id;
     private long serviceId;
+    private String serviceName;
     private String userLogin;
     private String servicesName;
     private String billingAccountNumber;
@@ -16,9 +17,10 @@ public class Subscribe {
     public Subscribe() {
     }
 
-    public Subscribe(long id, long serviceId, String userLogin, String servicesName, String billingAccountNumber, Date createDate, int period) {
+    public Subscribe(long id, long serviceId, String serviceName, String userLogin, String servicesName, String billingAccountNumber, Date createDate, int period) {
         this.id = id;
         this.serviceId = serviceId;
+        this.serviceName = serviceName;
         this.userLogin = userLogin;
         this.servicesName = servicesName;
         this.billingAccountNumber = billingAccountNumber;
@@ -41,6 +43,14 @@ public class Subscribe {
 
     public void setServiceId(long serviceId) {
         this.serviceId = serviceId;
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 
     public String getUserLogin() {

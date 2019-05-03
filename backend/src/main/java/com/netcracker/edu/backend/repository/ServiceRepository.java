@@ -32,6 +32,6 @@ public interface ServiceRepository extends JpaRepository<Services, Long>, Paging
 
     Services findByName(String name);
 
-
+    void deleteAllByUsersByUserIdLogin(String login);
 
 }

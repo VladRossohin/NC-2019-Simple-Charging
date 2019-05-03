@@ -11,5 +11,6 @@ public interface ServiceService {
     Object findByUserLogin(String login);
     Service saveService(Service service);
     void deleteById(long id);
+    void deleteByUserLogin(String login);
 
 }

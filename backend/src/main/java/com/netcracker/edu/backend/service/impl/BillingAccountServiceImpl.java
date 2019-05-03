@@ -51,6 +51,11 @@ public class BillingAccountServiceImpl implements BillingAccountService {
 
     @Override
     public void deleteByUserLogin(String login) {
-        billingAccountRepository.deleteByUsersByUserIdLogin(login);
+        billingAccountRepository.deleteAllByUsersByUserIdLogin(login);
+    }
+
+    @Override
+    public void deleteByNumber(String number) {
+        billingAccountRepository.deleteByNumber(number);
     }
 }

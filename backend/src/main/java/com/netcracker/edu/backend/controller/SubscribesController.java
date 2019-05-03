@@ -87,5 +87,18 @@ public class SubscribesController {
         subscribeService.delete(id);
     }
 
+    @DeleteMapping("/ba/{number}")
+    public void deleteSubscribeByBaNumber(@PathVariable String number) {
+        subscribeService.deleteByBaNumber(number);
+    }
 
+    @DeleteMapping("/user/{login}")
+    public void deleteSubscribeByUserLogin(@PathVariable String login) {
+        subscribeService.deleteByUserLogin(login);
+    }
+
+    @DeleteMapping("/service/{id}")
+    public void deleteSubscribeByServiceId(@PathVariable long id) {
+        subscribeService.deleteByServiceId(id);
+    }
 }

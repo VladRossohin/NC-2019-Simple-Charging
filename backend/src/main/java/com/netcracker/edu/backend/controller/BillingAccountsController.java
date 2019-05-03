@@ -92,9 +92,14 @@ public class BillingAccountsController {
         billingAccountService.delete(id);
     }
 
-    @DeleteMapping("{login}")
+    @DeleteMapping("/user/{login}")
     public void deleteBillingAccountByUserLogin(@PathVariable String login) {
         billingAccountService.deleteByUserLogin(login);
+    }
+
+    @DeleteMapping("/{number}")
+    public void deleteBillingAccountByNumber(@PathVariable String number) {
+        billingAccountService.deleteByNumber(number);
     }
 }
 

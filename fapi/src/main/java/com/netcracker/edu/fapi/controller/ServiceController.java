@@ -46,4 +46,9 @@ public class ServiceController {
     public void deleteServiceById(@PathVariable(name="id") long id){
         serviceService.deleteById(id);
     }
+
+    @DeleteMapping("/user/{login}")
+    public void deleteServiceByUserLogin(@PathVariable String login) {
+        serviceService.deleteByUserLogin(login);
+    }
 }

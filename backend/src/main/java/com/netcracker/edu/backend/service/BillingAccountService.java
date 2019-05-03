@@ -20,6 +20,7 @@ public interface BillingAccountService {
     BillingAccounts save(BillingAccounts billingAccount);
     void delete(long id);
     void deleteByUserLogin(String login);
+    void deleteByNumber(String number);
 
 
 }
