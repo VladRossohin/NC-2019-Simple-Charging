@@ -29,4 +29,16 @@ public class SubscribeServiceImpl implements SubscribeService {
         RestTemplate restTemplate = new RestTemplate();
         return Arrays.asList(restTemplate.getForObject(backendServerUrl + "/api/subscribe", Object.class));
     }
+
+    @Override
+    public Subscribe save(Subscribe subscribe) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(backendServerUrl + "/api/subscribe/", subscribe, Subscribe.class).getBody();
+    }
+
+    @Override
+    public void deleteById(long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "/api/service/" + id);
+    }
 }

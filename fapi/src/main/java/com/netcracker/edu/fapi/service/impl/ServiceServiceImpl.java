@@ -35,7 +35,17 @@ public class ServiceServiceImpl implements ServiceService {
         return restTemplate.getForObject(backendServerUrl + "/api/service/user/" + id, Object.class);
     }
 
+    @Override
+    public Object findByUserLogin(String login) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(backendServerUrl + "/api/service/user/login/" + login, Object.class);
+    }
 
+    @Override
+    public Service saveService(Service service) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(backendServerUrl + "/api/service/", service, Service.class).getBody();
+    }
 
     @Override
     public void deleteById(long id) {

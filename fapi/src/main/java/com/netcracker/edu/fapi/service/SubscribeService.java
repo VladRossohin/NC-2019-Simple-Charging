@@ -8,6 +8,8 @@ import java.util.List;
 public interface SubscribeService  {
     Object findAll();
     Object findByUserLogin(String login);
+    Subscribe save(Subscribe subscribe);
+    void deleteById(long id);
 
 
 }

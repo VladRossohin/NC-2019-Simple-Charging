@@ -10,12 +10,12 @@ public class Service {
     private String description;
     private String userLogin;
     private int cost;
-    private Date createDate;
+    private String createDate;
 
     public Service() {
     }
 
-    public Service(long id, String name, String description, String userLogin, int cost, Date createDate) {
+    public Service(long id, String name, String description, String userLogin, int cost, String createDate) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -64,11 +64,11 @@ public class Service {
         this.cost = cost;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 }

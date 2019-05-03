@@ -3,10 +3,8 @@ package com.netcracker.edu.fapi.controller;
 import com.netcracker.edu.fapi.models.BillingAccount;
 import com.netcracker.edu.fapi.service.BillingAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +32,18 @@ public class BillingAccountController {
     @GetMapping("/user/login/{login}")
     public Object getBillingAccountsByUserLogin(@PathVariable(name="login") String login) {
         return billingAccountService.findByUserLogin(login);
+    }
+
+    @PostMapping
+    public BillingAccount saveBillingAccount(@RequestBody BillingAccount billingAccount) {
+        if(billingAccount != null) {
+            return billingAccountService.save(billingAccount);
+        }
+        return null;
+    }
+
+    @DeleteMapping("/{login}")
+    public void deleteByUserLogin(@PathVariable String login) {
+        billingAccountService.deleteByUserLogin(login);
     }
 }

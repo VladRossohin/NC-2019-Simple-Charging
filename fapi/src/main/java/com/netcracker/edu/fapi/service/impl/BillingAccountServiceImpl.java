@@ -40,4 +40,16 @@ public class BillingAccountServiceImpl implements BillingAccountService {
         RestTemplate restTemplate = new RestTemplate();
         return Arrays.asList(restTemplate.getForObject(backendServerUrl + "/api/billing-account/user/login/" + login, Object.class));
     }
+
+    @Override
+    public BillingAccount save(BillingAccount billingAccount) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(backendServerUrl + "/api/billing-account/", billingAccount, BillingAccount.class).getBody();
+    }
+
+    @Override
+    public void deleteByUserLogin(String login) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "/api/billing-account/" + login);
+    }
 }

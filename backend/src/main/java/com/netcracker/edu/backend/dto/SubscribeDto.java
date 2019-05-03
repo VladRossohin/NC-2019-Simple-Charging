@@ -1,13 +1,12 @@
 package com.netcracker.edu.backend.dto;
 
-import com.netcracker.edu.backend.entity.Services;
-
 import java.sql.Date;
 
 public class SubscribeDto {
+    private long id;
     private String userLogin;
-    private String billingAccountsNumber;
-    private String ServicesName;
+    private String billingAccountNumber;
+    private long serviceId;
     private Date createDate;
     private int period;
 
@@ -15,12 +14,21 @@ public class SubscribeDto {
     public SubscribeDto() {
     }
 
-    public SubscribeDto(String userLogin, String billingAccountsNumber, String servicesName, Date createDate, int period) {
+    public SubscribeDto(long id, String userLogin, String billingAccountNumber, long serviceId, Date createDate, int period) {
+        this.id = id;
         this.userLogin = userLogin;
-        this.billingAccountsNumber = billingAccountsNumber;
-        ServicesName = servicesName;
+        this.billingAccountNumber = billingAccountNumber;
+        this.serviceId = serviceId;
         this.createDate = createDate;
         this.period = period;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUserLogin() {
@@ -31,20 +39,20 @@ public class SubscribeDto {
         this.userLogin = userLogin;
     }
 
-    public String getBillingAccountsNumber() {
-        return billingAccountsNumber;
+    public String getBillingAccountNumber() {
+        return billingAccountNumber;
     }
 
-    public void setBillingAccountsNumber(String billingAccountsNumberNumber) {
-        this.billingAccountsNumber = billingAccountsNumber;
+    public void setBillingAccountNumber(String billingAccountNumber) {
+        this.billingAccountNumber = billingAccountNumber;
     }
 
-    public String getServicesName() {
-        return ServicesName;
+    public long getServiceId() {
+        return serviceId;
     }
 
-    public void setServicesName(String servicesName) {
-        ServicesName = servicesName;
+    public void setServiceId(long serviceId) {
+        this.serviceId = serviceId;
     }
 
     public Date getCreateDate() {

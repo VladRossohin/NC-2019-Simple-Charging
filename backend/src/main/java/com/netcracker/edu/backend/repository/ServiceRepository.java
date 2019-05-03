@@ -20,6 +20,9 @@ public interface ServiceRepository extends JpaRepository<Services, Long>, Paging
     @Override
     Page<Services> findAll(Pageable pageable);
 
+    Services findById(long id);
+
+    Page<Services> findAllByUsersByUserIdLogin(String login, Pageable pageable);
   /*  @Override
     Iterable<Services> findAll(Sort sort);
 */
@@ -28,5 +31,7 @@ public interface ServiceRepository extends JpaRepository<Services, Long>, Paging
     List<Services> findAllByUsersByUserIdId(long id);
 
     Services findByName(String name);
+
+
 
 }

@@ -4,10 +4,7 @@ import com.netcracker.edu.fapi.models.Subscribe;
 import com.netcracker.edu.fapi.service.SubscribeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +22,18 @@ public class SubscribeController {
     @GetMapping
     public Object getAllSubscribes() {
         return subscribeService.findAll();
+    }
+
+    @PostMapping
+    public Subscribe saveSubscribe(@RequestBody Subscribe subscribe) {
+        if (subscribe != null) {
+            return subscribeService.save(subscribe);
+        }
+        return null;
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable long id) {
+        subscribeService.deleteById(id);
     }
 }

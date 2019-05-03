@@ -38,11 +38,8 @@ public class BillingAccountsController {
 
     @GetMapping("/{id}")
     public ResponseEntity<BillingAccountDto> getBillingAccountById(@PathVariable long id) {
-        Optional<BillingAccounts> billingAccountsOptional = billingAccountService.findById(id);
-        if(!billingAccountsOptional.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(Converter.toDto(billingAccountsOptional.get()));
+        BillingAccounts billingAccountsOptional = billingAccountService.findById(id);
+        return ResponseEntity.ok(Converter.toDto(billingAccountsOptional));
     }
 
     @GetMapping("/user/{id}")
@@ -91,8 +88,13 @@ public class BillingAccountsController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteBillingAccount(@PathVariable(name = "id") Long id) {
+    public void deleteBillingAccount(@PathVariable(name = "id") long id) {
         billingAccountService.delete(id);
+    }
+
+    @DeleteMapping("{login}")
+    public void deleteBillingAccountByUserLogin(@PathVariable String login) {
+        billingAccountService.deleteByUserLogin(login);
     }
 }
 

@@ -8,7 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-import java.util.Optional;
 
 @org.springframework.stereotype.Service
 public class ServiceServiceImpl implements ServiceService {
@@ -22,12 +21,17 @@ public class ServiceServiceImpl implements ServiceService {
     }
 
     @Override
+    public Page<Services> findAllByUsersByUserIdLogin(String login, Pageable pageable) {
+        return serviceRepository.findAllByUsersByUserIdLogin(login, pageable);
+    }
+
+    @Override
     public List<Services> findAll() {
         return (List<Services>) serviceRepository.findAll();
     }
 
     @Override
-    public Optional<Services> findById(long id) {
+    public Services findById(long id) {
         return serviceRepository.findById(id);
     }
 

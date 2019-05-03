@@ -9,6 +9,7 @@ public interface BillingAccountService {
     BillingAccount findById(long id);
     Object findByUserId(long id);
     Object findByUserLogin(String login);
-
+    BillingAccount save(BillingAccount billingAccount);
+    void deleteByUserLogin(String login);
 
 }

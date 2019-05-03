@@ -40,11 +40,13 @@ public class ServicesController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ServiceDto> getServiceById(@PathVariable long id) {
-        Optional<Services> servicesOptional = serviceService.findById(id);
-        if (!servicesOptional.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(Converter.toDto(servicesOptional.get()));
+        Services servicesOptional = serviceService.findById(id);
+        return ResponseEntity.ok(Converter.toDto(servicesOptional));
+    }
+
+    @GetMapping("/user/login/{login}")
+    public ResponseEntity<Page<ServiceDto>> getServicesByUserLogin(@PathVariable String login) {
+        return ResponseEntity.ok(serviceService.findAllByUsersByUserIdLogin(login, Pageable.unpaged()).map(Converter::toDto));
     }
 
     @GetMapping("/user/{id}")
@@ -54,6 +56,7 @@ public class ServicesController {
         return servicesName;
 
     }
+
 
 
     /*@RequestMapping(value = "/{id}", method = RequestMethod.GET)

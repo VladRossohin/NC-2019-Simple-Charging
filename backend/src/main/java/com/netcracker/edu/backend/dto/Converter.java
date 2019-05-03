@@ -8,9 +8,6 @@ import com.netcracker.edu.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-
 @Service
 public class Converter {
     private static UserRepository userRepository;
@@ -99,16 +96,18 @@ public class Converter {
                 subscribeDto.getCreateDate(),
                 subscribeDto.getPeriod(),
                 userRepository.findByLogin(subscribeDto.getUserLogin()),
-                billingAccountRepository.findByNumber(subscribeDto.getBillingAccountsNumber()),
-                serviceRepository.findByName(subscribeDto.getServicesName())
+                billingAccountRepository.findByNumber(subscribeDto.getBillingAccountNumber()),
+                serviceRepository.findById(subscribeDto.getServiceId())
+
         );
     }
 
     public static SubscribeDto toDto(Subscribes subscribe) {
         return new SubscribeDto(
+                subscribe.getId(),
                 subscribe.getUsersByUserId().getLogin(),
                 subscribe.getBillingAccountsByBaId().getNumber(),
-                subscribe.getServicesByServiceId().getName(),
+                subscribe.getServicesByServiceId().getId(),
                 subscribe.getDate(),
                 subscribe.getPeriod()
         );

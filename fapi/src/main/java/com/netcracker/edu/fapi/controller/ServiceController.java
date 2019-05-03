@@ -29,6 +29,19 @@ public class ServiceController {
         return serviceService.findByUserId(id);
     }
 
+    @GetMapping("/user/login/{login}")
+    public Object getServiceByUserLogin(@PathVariable String login) {
+        return serviceService.findByUserLogin(login);
+    }
+
+    @PostMapping
+    public Service saveService(@RequestBody Service service) {
+        if(service != null) {
+            return serviceService.saveService(service);
+        }
+        return null;
+    }
+
     @DeleteMapping("/{id}")
     public void deleteServiceById(@PathVariable(name="id") long id){
         serviceService.deleteById(id);

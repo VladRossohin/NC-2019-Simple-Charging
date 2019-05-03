@@ -22,4 +22,11 @@ public interface SubscribeRepository extends JpaRepository<Subscribes, Long>, Pa
     Page<Subscribes> findAllByUsersByUserIdLogin(String login, Pageable pageable);
 
     Optional<Subscribes> findById(long id);
+
+    void deleteById(long id);
+
+    void deleteAllByBillingAccountsByBaIdNumber(String number);
+
+    void deleteAllByUsersByUserIdLogin(String login);
+
 }

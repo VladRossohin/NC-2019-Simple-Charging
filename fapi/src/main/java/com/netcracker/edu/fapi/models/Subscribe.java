@@ -4,12 +4,11 @@ import java.sql.Date;
 
 public class Subscribe {
 
-    /*
-        private long id;
-    */
+    private long id;
+    private long serviceId;
     private String userLogin;
     private String servicesName;
-    private String billingAccountsNumber;
+    private String billingAccountNumber;
     private java.sql.Date createDate;
     private int period;
 
@@ -17,12 +16,31 @@ public class Subscribe {
     public Subscribe() {
     }
 
-    public Subscribe(String userLogin, String servicesName, String billingAccountsNumber, java.sql.Date createDate, int period) {
+    public Subscribe(long id, long serviceId, String userLogin, String servicesName, String billingAccountNumber, Date createDate, int period) {
+        this.id = id;
+        this.serviceId = serviceId;
         this.userLogin = userLogin;
         this.servicesName = servicesName;
-        this.billingAccountsNumber = billingAccountsNumber;
+        this.billingAccountNumber = billingAccountNumber;
         this.createDate = createDate;
         this.period = period;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+
+    public long getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(long serviceId) {
+        this.serviceId = serviceId;
     }
 
     public String getUserLogin() {
@@ -41,12 +59,12 @@ public class Subscribe {
         this.servicesName = servicesName;
     }
 
-    public String getBillingAccountsNumber() {
-        return billingAccountsNumber;
+    public String getBillingAccountNumber() {
+        return billingAccountNumber;
     }
 
-    public void setBillingAccountsNumber(String billingAccountsNumber) {
-        this.billingAccountsNumber = billingAccountsNumber;
+    public void setBillingAccountNumber(String billingAccountNumber) {
+        this.billingAccountNumber = billingAccountNumber;
     }
 
     public Date getCreateDate() {

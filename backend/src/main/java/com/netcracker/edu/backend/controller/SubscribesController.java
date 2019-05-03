@@ -3,6 +3,7 @@ package com.netcracker.edu.backend.controller;
 import com.netcracker.edu.backend.dto.Converter;
 import com.netcracker.edu.backend.dto.SubscribeDto;
 import com.netcracker.edu.backend.entity.Subscribes;
+import com.netcracker.edu.backend.repository.SubscribeRepository;
 import com.netcracker.edu.backend.service.SubscribeService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;

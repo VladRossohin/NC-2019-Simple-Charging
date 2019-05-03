@@ -8,9 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-
 @Service
 public class BillingAccountServiceImpl implements BillingAccountService {
 
@@ -33,7 +30,7 @@ public class BillingAccountServiceImpl implements BillingAccountService {
     }
 
     @Override
-    public Optional<BillingAccounts> findById(long id) {
+    public BillingAccounts findById(long id) {
         return billingAccountRepository.findById(id);
     }
 
@@ -44,11 +41,16 @@ public class BillingAccountServiceImpl implements BillingAccountService {
 
     @Override
     public BillingAccounts save(BillingAccounts billingAccount) {
-        return null;
+        return billingAccountRepository.save(billingAccount);
     }
 
     @Override
     public void delete(long id) {
         billingAccountRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteByUserLogin(String login) {
+        billingAccountRepository.deleteByUsersByUserIdLogin(login);
     }
 }

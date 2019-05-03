@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BillingAccount {
 
-    private String userLogin;
     private String type;
     private String number;
     private int money;
-
+    private String userLogin;
 
     public BillingAccount() {
     }
